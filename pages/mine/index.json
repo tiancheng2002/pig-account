@@ -1,0 +1,13 @@
+{
+  "usingComponents": {
+    "i-modal":"../../dist/modal/index",
+    "i-toast":"../../dist/toast/index",
+    "van-circle": "@vant/weapp/circle/index",
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-overlay": "@vant/weapp/overlay/index"
+  },
+  "navigationBarBackgroundColor": "#ffb341",
+  "navigationBarTitleText": "个人中心",
+  "navigationBarTextStyle": "white"
+}

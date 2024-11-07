@@ -1,0 +1,4 @@
+.i-grid{border-top:1rpx solid #e9eaec;border-left:1rpx solid #e9eaec;overflow:hidden;display: flex;justify-content: center;align-items: center;}
+.i-grid i-grid-item:nth-child(1){
+  width: 50%;
+}

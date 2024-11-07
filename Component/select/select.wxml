@@ -1,0 +1,11 @@
+<view class='com-selectBox'>
+  <view class='com-sContent' bindtap='selectToggle'>
+    <view class='com-sTxt'>{{nowText}}</view>
+  </view>
+  <view class='com-sList' wx:if="{{selectShow}}">
+    <view data-bid="0" data-name="全部" class='com-sItem' bindtap='setText'>全部</view>
+    <view wx:for="{{propArray}}" data-index="{{index}}" wx:key='' class='com-sItem' bindtap='setText' data-bid="{{item.bid}}" data-name="{{item.bname}}">
+    <image class="booksImg" src="{{item.bimg}}"></image>
+    <span class="booksName">{{item.bname}}</span></view>
+  </view>
+</view>

@@ -1,0 +1,190 @@
+<wxs module="filters" src="../../utils/number.wxs"></wxs>
+<wxs module="date" src="../../utils/common.wxs"></wxs>
+<view style="opacity:{{!isvisible?'0':'1'}}">
+  <view class="month_top">
+    <view><span class="month">{{monthText[month]}}月</span><span class="year">{{year}}</span></view>
+    <view style="display: flex;align-items: center;margin-top:12px;">
+      <view class="count_top">
+        <view class="{{isincome==0?'count_top_item active':'count_top_item'}}" data-isincome="0" bindtap="countPay">支</view>
+        <view class="{{isincome==1?'count_top_item active':'count_top_item'}}" data-isincome="1" bindtap="countPay">收</view>
+      </view>
+      <van-icon bindtap="showDate" size="32px" color="white" name="calendar-o" />
+    </view>
+  </view>
+  <!-- 顶部选择 -->
+
+
+  <view class="count_calendar" wx:if="{{login}}">
+    <!-- <view class="calendar_date">
+      <i-icon size="24" color="#ffae00" type="return" bindtap="beforeMonth" /><span style="color:#fca13f;font-size:20px">{{year}}年
+        {{month}}月</span>
+      <i-icon size="24" type="enter" color="#ffae00" bindtap="nextMonth" />
+    </view> -->
+    <view class="calendar_week" wx:for="{{week}}" wx:key="index">
+      {{item}}
+    </view>
+    <view style="color:gray" class="calendar_item" wx:for="{{before}}" wx:key="index">
+      {{beforeDays-index}}
+    </view>
+    <view
+      style="background-color:{{dayChecked==index?'rgb(250, 149, 149)':item.sumMoney>=500?'#fac245':item.sumMoney>=300?'#fbd275':item.sumMoney>=100?'#fad98f':item.sumMoney>0?'#f9e3b1':'#f8eac9'}}"
+      class="calendar_item" wx:for="{{nowDays}}" data-day="{{item.createTime}}" data-check="{{index}}" wx:key="index"
+      bindtap="{{item.sumMoney!=null?'detailDay':''}}">
+      <view>
+        <view>{{index}}</view>
+        <view class="calendar_money" wx:if="{{item!=null}}">
+          <span wx:if="{{item.isincome==0}}">-</span><span
+            wx:if="{{item.isincome==1}}">+</span>{{filters.toFix2(item.sumMoney)}}
+        </view>
+      </view>
+    </view>
+    <view style="color:gray" class="calendar_item" wx:for="{{after}}" wx:key="index">
+      {{index+1}}
+    </view>
+  </view>
+ 
+  <!-- 选择表格中的某一项，显示当前的消费或者收入 -->
+  <view class="order_detail" wx:if="{{dayChecked!=0}}">
+    <view class="count_title">
+      <span>{{dayChecked}}号账单</span><span style="margin-left:12px"><span
+          class="detail_pay">{{isincome==0?'支出':'收入'}}</span><span
+          class="detail_pay">￥{{filters.toFix2(nowDays[dayChecked].sumMoney)}}</span></span>
+    </view>
+    <view style="padding: 0 16px;">
+      <view class="order_item" wx:for="{{accountDay}}" wx:key="index" data-number="{{item.aid}}" bindtap="goDetail">
+        <view>
+          <iconfont name="{{item.methods.iconfont}}"></iconfont>
+        </view>
+        <view class="item_information">
+          <view class="account_information">
+            <view>
+              <view>{{item.methods.pname}}</view>
+              <view class="item_text" wx:if="{{item.remark!=null}}">{{item.remark!=null&&item.remark!=''?item.remark:''}}</view>
+            </view>
+            <view class="item_right">
+              <view>￥{{filters.toFix2(item.money)}}</view>
+              <view wx:if="{{item.consumePay=='true'}}">
+                <span class="consumpay">非理性消费</span>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 分割线 -->
+  <view wx:if="{{dayChecked!=0}}" class="split"></view>
+
+  <!-- 非理性消费统计 -->
+  <view class="consumePay" wx:if="{{consumePaySum!=0}}">
+    <view>
+        <image style="width: 140px;height: 90px;" src="http://image.xiaozhu02.top/%E6%97%A5%E6%9C%9F%E8%AE%B0%E5%BD%95.png"></image>
+    </view>
+    <view style="margin-left: 8px;">
+      <view style="font-size:13px;"><span style="color:#ff9900;">非理性消费</span>共支出<span style="font-size:24px;color:#ff9900;margin-top:6px;">￥{{consumePayMoney}}</span></view>
+      <view style="font-size:13px;margin-top:6px;">占总支出<span style="color:#ff9900;">{{filters.toFix2(consumePayMoney/sumMoney*100)}}%</span></view>
+      <view class="consumeButton" bindtap="comsumePay">查看所有非理性支出</view>
+    </view>
+  </view>
+  <!-- <view wx:if="{{consumePaySum!=0}}">
+    非理性消费{{consumePayMoney}}元{{consumePaySum}}笔{{consumePayMoney/sumMoney}}
+  </view> -->
+
+  <!-- 统计图，按月份统计的话显示对应的表格信息，按年显示的话生成统计图 -->
+  <view class="count_sort" wx:if="{{methodCount.length!=0}}">
+    <view class="count_title">
+      {{month}}月<span>{{isincome==0?'支出':'收入'}}</span>构成
+    </view>
+  </view>
+  <view style="position: {{methodCount.length!=0?'relative':'absolute'}};" class="main">
+    <view class="container" hidden="{{hiddenChart}}">
+      <ec-canvas class="ec-canvas1" id="mychart-dom-pie" canvas-id="mychart-pie" ec="{{ec1}}" bind:init="echartInit">
+      </ec-canvas>
+    </view>
+  </view>
+
+  <view class="method_count" wx:if="{{methodCount.length!=0}}">
+    <view class="method_count_item" wx:for="{{methodCount}}" wx:key="index">
+      <view>
+        <iconfont name="{{item.iconfont}}"></iconfont>
+      </view>
+      <view class="method_information">
+        <view class="method_pay">
+          <view>
+            <span style="font-size:15px;">{{item.pname}}</span>
+            <span class="pay_money">￥{{item.sunMoney}}</span>
+          </view>
+          <view class="method_progress">
+            <progress stroke-width="10" backgroundColor="white" color="#07c160"
+              percent="{{filters.toFix2(item.sunMoney/sumMoney*100)}}" border-radius="100px"></progress>
+          </view>
+        </view>
+        <view class="method_precent" data-pid="{{item.pid}}" data-index="{{index}}" bindtap="goOrder">
+          {{filters.toFix2(item.sunMoney/sumMoney*100)}}%
+          <i-icon type="enter" />
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 消费排行 -->
+  <view class="count_sort" wx:if="{{accountByOrder.length!=0}}">
+    <view class="count_title">
+      {{month}}月<span>{{isincome==0?'支出':'收入'}}</span>排行
+    </view>
+  </view>
+  <view class="sorted">
+    <view class="sorted_item" wx:for="{{accountByOrder.length>10?10:accountByOrder.length}}"
+      data-number="{{accountByOrder[index].aid}}" wx:key="index" bindtap="goDetail">
+      <view class="sorted_item_number.{{(index+1)==1?'first':(index+1==2)?'second':(index+1==3)?'third':''}}">{{index+1}}</view>
+      <view class="sorted_item_information">
+        <view>
+          <iconfont name="{{accountByOrder[index].methods.iconfont}}"></iconfont>
+        </view>
+        <view class="information_text">
+          <view>{{accountByOrder[index].methods.pname}}</view>
+          <view wx:if="{{accountByOrder[index].remark!=null&&accountByOrder[index].remark!=''}}">{{accountByOrder[index].remark}}</view>
+        </view>
+      </view>
+      <view class="information_pay">
+        <view> <span wx:if="{{accountByOrder[index].isincome==0}}">-</span><span
+            wx:if="{{accountByOrder[index].isincome==1}}">+</span>{{filters.toFix2(accountByOrder[index].money)}}</view>
+        <view>{{date.formatTime(accountByOrder[index].createTime)}}</view>
+      </view>
+    </view>
+    <view wx:if="{{accountByOrder.length>10}}" class="order_all" bindtap="orderAll">
+      全部排行 >
+    </view>
+  </view>
+
+  <view>
+    <!-- 空提示 -->
+    <van-empty wx:if="{{login&&methodCount.length==0&&accountByOrder.length==0}}" image="http://image.xiaozhu02.top/%E6%9A%82%E6%97%A0%E8%AE%B0%E5%BD%95.png" description="暂无账单记录" />
+    <!-- 未登录 -->
+    <view class="notice">
+      <van-empty wx:if="{{login==false}}" image="http://image.xiaozhu02.top/%E6%97%A0%E7%BD%91%E7%BB%9C.png" description="还没有登录哦" />
+    </view>
+  </view>
+
+  <view style="height:110px"></view>
+
+</view>
+
+
+<!-- 顶部 -->
+<van-popup
+  show="{{ show }}"
+  round
+  position="bottom"
+  custom-style="height: 50%"
+  >
+    <van-datetime-picker
+    type="year-month"
+    value="{{ currentDate }}"
+    min-date="{{ minDate }}"
+    max-date="{{maxDate}}"
+    bind:confirm="onInput"
+    bind:cancel="close"
+  />
+  </van-popup>

@@ -1,0 +1,164 @@
+<wxs module="number" src="../../../utils/number.wxs"></wxs>
+<wxs module="date" src="../../../utils/common.wxs"></wxs>
+<view wx:if="{{isvisible}}">
+<view class="book_top">
+  <image class="book_bgImg" mode="scaleToFill"  src="{{book.bimg}}"></image>
+  <view style="background-color: black;opacity: 1;position: absolute;top: 0;left: 0;z-index: 999;"></view>
+  <view class="book_first">
+    <view class="book_info">
+      <image class="book_img" src="{{book.bimg}}"></image>
+      <span class="book_name">{{book.bname}}</span>
+    </view>
+    <view>
+      <van-icon class="top_icon" size="20px" wx-if="{{book.type==1}}" bindtap="showMembers" name="friends-o" />
+      <van-icon class="top_icon" size="24px" wx-if="{{user.openId==hostId}}" data-bid="{{book.bid}}" bindtap="editBook" name="edit" />
+      <van-icon class="top_icon" size="24px" wx-if="{{user.openId==hostId}}" catchtap="showDel" name="bulb-o" />
+    </view>
+  </view>
+  <view class="book_second">
+    <view>
+      <span class="month">{{monthText[month]}}月</span>
+      <span class="year">{{year}}</span>
+    </view>
+    <view>
+      <span bindtap="beforeMonth" style="margin-right: 6px;" class="month_icon">
+        <van-icon color="white" name="arrow-left" />
+      </span>
+      <span bindtap="nextMonth" class="month_icon">
+        <van-icon color="white" name="arrow" />
+      </span>
+    </view>
+  </view>
+  <view class="book_third">
+    <view class="book_pay">
+      <span class="third_text">支出</span><span class="third_money">￥{{number.toFix2(payMoney==null?0:payMoney)}}</span>
+    </view>
+    <view class="book_income">
+      <span class="third_text">收入</span><span class="third_money">￥{{number.toFix2(incomeMoney==null?0:incomeMoney)}}</span>
+    </view>
+  </view>
+</view>
+<view wx-if="{{account.length!=0}}" style="padding: 10px;display: flex;justify-content: center;">
+  <van-tag size="large" round="true" color="#ffb400" plain type="primary">本月账单</van-tag>
+</view>
+<view>
+    <view class="bill_context" wx:for="{{account}}" wx:key="index">
+      <view class="context_detail">
+        <span class="context_date">{{date.formatMonth(item.createTime,'text')}}</span>
+        <span class="context_date">{{date.formatWeek(item.createTime)}}</span>
+        <span wx:if="{{date.formatTime(item.createTime)==today}}" class="today">今日</span>
+        <span class="context_pay"><span class="context_income_text">收 </span><span>{{number.toFix2(item.incomeMoney==null?0:item.incomeMoney)}}</span></span>
+        <span class="context_pay"><span class="context_pay_text">支 </span><span>{{number.toFix2(item.payMoney==null?0:item.payMoney)}}</span></span>
+      </view>
+      <view wx:for="{{item.accounts}}" wx:key="accountKey" wx:for-item="accountItem" class="context_bill" data-number="{{accountItem.aid}}" bindtap="detail">
+        <view class="bill_item">
+          <view>
+            <iconfont name="{{accountItem.methods.iconfont}}"></iconfont>
+          </view>
+          <view class="bill_information">
+            <view class="bill_method">{{accountItem.methods.pname}}</view>
+            <view class="bill_remark">{{accountItem.remark!=''&&accountItem.remark!=null?accountItem.remark:''}}</view>
+          </view>
+        </view>
+        <view style="text-align:right;margin-top: 6px;">
+          <view class="{{accountItem.isincome==0?'pay_text':'income_text'}}">
+            <span wx:if="{{accountItem.isincome==0}}">-</span>
+            <span wx:if="{{accountItem.isincome==1}}">+</span>
+            {{number.toFix2(accountItem.money)}}
+          </view>
+          <view style="display: flex;">
+            <view class="user" wx:if="{{book.type==1}}">
+              <image class="user_head" src="{{accountItem.user.head}}" /><span class="user_name">{{accountItem.user.nickName}}</span>
+            </view>
+            <view wx:if="{{accountItem.consumePay=='true'}}">
+              <span class="consumpay">非理性消费</span>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+    <!-- 空提示 -->
+    <van-empty wx:if="{{account.length==0}}" image="http://image.xiaozhu02.top/%E6%9A%82%E6%97%A0%E8%AE%B0%E5%BD%95.png" description="暂无账单记录" />
+</view>
+
+<!-- 遮罩层 -->
+<van-overlay lock-scroll="{{false}}" show="{{ show }}" bind:click="onClickHide">
+  <view class="wrapper">
+    <view class="block">
+      <view style="display: flex;justify-content: space-between;position: relative;padding: 0 8px;">
+        <view>账本成员</view>
+        <view style="color: #ed3f14;">
+          <button wx:if="{{hostId==user.openId}}" class="inviteButton" open-type="share" bindtap="goinvited" title="邀请">邀请</button>
+          <span wx:if="{{hostId==user.openId}}"><van-icon  color="#ed3f14" name="plus" />邀请</span>
+        </view>
+      </view>
+      <view class="book_members">
+        <view wx:for="{{host}}" wx:key="index" class="members">
+          <view>
+            <image src="{{item.head}}" class="member_head"></image>
+          </view>
+          <view style="width: 100%;">
+            <view class="member_info">
+              <view class="member_name">
+                <span>{{item.nickName}}</span><span><van-tag custom-class="idenity" color="#ff9900" size="medium">发起人</van-tag></span>
+              </view>
+              <view class="member_addTime">
+                {{date.formatTime(item.addTime)}}加入
+              </view>
+            </view>
+            <view class="member_info">
+              <view class="member_count">
+                <span class="ji">记</span><span class="ji_count">{{item.count}}</span>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view wx:for="{{members}}" wx:key="index" class="members">
+          <view>
+            <image src="{{item.head}}" class="member_head"></image>
+          </view>
+          <view style="width: 100%;">
+            <view class="member_info">
+              <view class="member_name">
+                <span>{{item.nickName}}</span><span><van-tag custom-class="idenity" color="#19be6b" size="medium">成员</van-tag></span>
+              </view>
+              <view class="member_addTime">
+                {{date.formatTime(item.addTime)}}加入
+              </view>
+            </view>
+            <view class="member_info">
+              <view class="member_count">
+                <span class="ji">记</span><span class="ji_count">{{item.count}}</span>
+              </view>
+              <view wx:if="{{item.uid==user.openId||hostId==user.openId}}" data-uid="{{item.uid}}" data-count="{{item.count}}" bindtap="showDelMem" data-action="{{hostId==user.openId?'remove':'out'}}" class="member_remove"><van-icon name="share-o" />{{hostId==user.openId?'移除':item.uid==user.openId?'退出账本':''}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <!-- <view>
+        <button class="inviteButton" color="#ff9900" open-type="share" title="分享一下"  round="true">邀请好友加入账本</button>
+      </view> -->
+    </view>
+  </view>
+  
+</van-overlay>
+
+
+
+<!-- 删除确认框 -->
+<i-toast id="toast" />
+<van-toast id="van-toast" />
+<!-- 确认弹窗 -->
+<van-dialog id="van-dialog" use-slot show="{{del}}" show-cancel-button title="删除账本" bind:confirm="delBook" confirmButtonText="我已了解后果" custom-style="padding:0 16px;">
+  <view style="margin-top: 12px;">该操作属于危险操作，删除账本后将删除该账本中<span style="color: #ed3f14;">所有成员以及记录</span>，不可恢复，请谨慎操作！</view>
+  <van-cell-group>
+      <view style="display: flex;align-items: center;margin: 12px 0;">
+        <span style="margin-right: 8px;">账本名：</span><van-field value="{{bookName}}" bind:change="bookNameInput" input-align="left" center="true" custom-style="border:1px solid black;border-radius: 5px;height: 30px;" />
+      </view>
+    </van-cell-group>
+</van-dialog>
+
+<van-dialog id="van-dialog" use-slot show="{{mem}}" show-cancel-button title="{{action=='remove'?'移除成员确认':'退出账本确认'}}" bind:confirm="delMember" bind:cancel="close">
+  <view class="noticeText">{{action=='remove'?'确认移除该成员吗':'确认退出该账本吗'}}</view>
+</van-dialog>

@@ -1,0 +1,59 @@
+page{
+  background-color: #f3f3f3;
+}
+.books{
+  margin-top: 12px;
+  padding: 0 12px;
+}
+.book_top{
+  margin-top: 12px;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 12px;
+}
+.addBook{
+  background-color: #ffc057;
+  padding:6px 16px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.book{
+  margin: 8px 0;
+  display: flex;
+  background-color: white;
+  border-radius: 10px;
+  padding: 8px;
+}
+.bimg{
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+}
+.bookMembers{
+  width: 36px!important;
+  height: 18px!important;
+  text-align: center!important;
+  display: flex;
+  justify-content: center;
+  margin-left: 8px;
+}
+.members{
+  margin-left: 3px;
+}
+.mybook,.joinBook{
+  display: flex;
+  width: 100%;
+  padding: 0 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+.bookDescription{
+  margin-top: 5px;
+  font-size: 12px;
+  color: #80848f;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}

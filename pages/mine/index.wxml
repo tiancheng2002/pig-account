@@ -1,0 +1,157 @@
+<wxs module="number" src="../../utils/number.wxs"></wxs>
+<view style="padding-bottom:36px" wx:if="{{mine}}">
+  <!-- 个人信息 -->
+  <view class="bg_mine">
+    <view class="mine">
+      <view style="margin-top:16px;width:100%">
+        <view class="touxiang_view">
+          <image class="mine_touxiang" src="{{user!=''?user.avatarUrl:'https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJlIUY035GDhaAGdH1ZTpNZjmLI2wf1COibll2b9mDicWYFFryYKFKHDu0POOmaFIqfdA8NppXRlYGw/132'}}"></image>
+        </view>
+        <view wx:if="{{user!=''}}" class="mine_name">
+          {{user.nickName}}
+        </view>
+        <view bindtap="newGetUserProfile" wx:else="{{user==''}}" class="mine_name">
+          立即授权
+        </view>
+        <!-- 记账天数以及笔数信息 -->
+        <view class="mine_account">
+          <view class="account_text">
+            <view class="account_data">{{day}}</view>
+            <view class="account_information">记账天数(天)</view>
+          </view>
+          <view class="account_text">
+            <view class="account_data">{{count}}</view>
+            <view class="account_information">记账笔数(笔)</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 灰色分割线 -->
+  <!-- <view class="split"></view> -->
+
+  <view class="budget">
+    <!-- <view class="budget_title">当月预算</view> -->
+    <view class="budget_detail">
+      <view>
+        <view>{{pay==null?0:number.toFix2(pay)}}</view>
+        <view class="budget_text">当月消费(元)</view>
+      </view>
+      <view style="position: relative;" class="circle_view">
+        <van-circle type="2d" style="z-index: -1;" value="{{ pay==null?100:(budget-pay)/budget*100 }}" layer-color="#e9eaec" size="90" color="{{ gradientColor }}" text="{{show||invited?'':budget}}" /><view wx:if="{{user}}" class="editText" bindtap="showBudget">修改</view>
+      </view>
+      <view>
+        <view>{{pay==null||(budget-pay<0)?0:number.toFix2(budget-pay)}}</view>
+        <view class="budget_text">剩余预算(元)</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 对应功能模块 -->
+  <view class="function">
+    <view class="function_item" bindtap="goIOU">
+      <view class="item_information">
+        <view>
+          <iconfont name="jietiao"></iconfont>
+        </view>
+        <view class="item_text">查看借条</view>
+      </view>
+      <view>
+        <i-icon size="20" color="rgb(210, 210, 210);" type="enter" />
+      </view>
+    </view>
+
+    <!-- 个人 -->
+    <view class="function_item" bindtap="goBook">
+      <view class="item_information">
+        <view>
+          <iconfont name="zhangben3x"></iconfont>
+        </view>
+        <view class="item_text">查看账本</view>
+      </view>
+      <view>
+        <i-icon size="20" color="rgb(210, 210, 210);" type="enter" />
+      </view>
+    </view>
+
+    <view class="function_item" bindtap="about">
+      <view class="item_information">
+        <view>
+          <iconfont name="guanyuwomen"></iconfont>
+        </view>
+        <view class="item_text">关于小程序</view>
+      </view>
+      <view>
+        <i-icon size="20" color="rgb(210, 210, 210);" type="enter" />
+      </view>
+    </view>
+    <view class="function_item_te">
+      <button class="shareButton" open-type="share" title="分享一下"></button>
+      <view style="width:100%" class="function_item">
+        <view class="item_information">
+          <view>
+            <iconfont name="fenxiang"></iconfont>
+          </view>
+          <view class="item_text">分享一下</view>
+        </view>
+        <view>
+          <i-icon size="20" color="rgb(210, 210, 210);" type="enter" />
+        </view>
+      </view>
+    </view>
+
+    <view class="function_item">
+      <view class="item_information">
+        <view>
+          <iconfont name="banbenhao"></iconfont>
+        </view>
+        <view class="item_text">当前版本</view>
+      </view>
+      <view>
+        {{version}}
+      </view>
+    </view>
+
+  </view>
+
+  <!-- 分享 -->
+  <!-- <view style="padding-bottom:12px;" hover-class="none">
+    <button class="share" open-type="share" title="分享一下" hover-class="none">
+      分享给朋友
+    </button>
+  </view> -->
+  
+
+</view>
+<!-- <button class="share" bindtap="logout">退出登录</button> -->
+
+<!-- <view wx:if="{{user!=''}}">
+  <view>{{user.nickName}}</view>
+</view> -->
+<!-- <button bindtap="goIOU">查看借条</button> -->
+<!-- <open-data type="userAvatarUrl"></open-data>
+<open-data type="userNickName" lang="zh_CN"></open-data> -->
+
+<!-- <button class="loginButton" wx:if="{{user==''}}" bindtap="getUserProfile">授权登录</button> -->
+
+<!-- <i-modal visible="{{ invited }}" bind:ok="join" bind:cancel="close">
+    <view>这是一个无标题的对话框</view>
+</i-modal> -->
+<van-dialog id="van-dialog" use-slot show="{{invited}}" show-cancel-button title="账本邀请" bind:confirm="join" bind:cancel="close">
+  <view class="noticeText">是否加入该账本</view>
+</van-dialog>
+<i-toast id="toast" />
+
+<!-- 消息提示框 -->
+<!-- <van-toast id="van-toast" /> -->
+
+<!-- 修改预算输入框 -->
+<van-dialog id="van-dialog" use-slot show="{{show}}" show-cancel-button title="预算" confirm-button-color="#ff9900" bind:confirm="editBudget" bind:cancel="closeBudget">
+  <van-cell-group custom-style="z-index:999">
+      <view style="width: 100%;display: flex;justify-content: center;margin: 16px 0;">
+      <van-field custom-style="z-index:999;border:1px solid rgba(0,0,0,0.2);width:100px;height:30px;border-radius:20px;" value="{{newBudget}}" type="number" maxlength="6" bind:change="budgetInput" input-align="center" center="true" /></view>
+    </van-cell-group>
+</van-dialog>
+
+

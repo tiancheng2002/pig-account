@@ -1,0 +1,22 @@
+<!-- 关于小程序 -->
+<view>
+
+  <!-- 小程序图标 -->
+  <view class="app_image">
+    <image src="https://pic.imgdb.cn/item/622431505baa1a80ab0f2c21.png"></image>
+  </view>
+  <view class="app_name">
+    记账小程序
+  </view>
+  <view class="about">
+    <view class="first_paragraph">
+      一个简单的记账本程序，在这里面你可以将每天的收入和支出都记录下来，从而可以让你知道自己每天的账单以及每月的账单情况，还可以记录自己的非理性消费
+    </view>
+
+    <view class="second_paragraph">
+      如果你在使用小程序的过程中发现有不好的地方可以跟我们进行反馈，我们会及时的做出对应的调整，接受你们任何的反馈；如果觉得这个小程序还可以的话，也可以推荐给身边的朋友来使用！非常感谢您的支持！
+    </view>
+  </view>
+  <button class="connect" open-type="contact" bindcontact="handleContact" session-from="sessionFrom">联系我们</button>
+
+</view>

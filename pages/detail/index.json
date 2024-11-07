@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "i-icon": "../../dist/icon/index",
+    "iconfont":"../../iconfont/iconfont",
+    "van-dialog": "@vant/weapp/dialog/index"
+  },
+  "navigationBarTitleText": "账单详情"
+}

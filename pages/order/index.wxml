@@ -1,0 +1,79 @@
+<wxs module="number" src="../../utils/number.wxs"></wxs>
+<wxs module="date" src="../../utils/common.wxs"></wxs>
+<!-- 每月支出排行以及分类消费排行详情（ 按金额或者时间 ） -->
+<scroll-view scroll-y='true' style="height:{{height}}px;" bindscrolltolower='lower'>
+  <view>
+
+    <!-- 顶部固定框 -->
+    <view class="order_top">
+      <view class="order_date">
+        {{month}}月<span wx:if="{{order!=null}}">{{order.pname}}</span><span wx:if="{{pid==-1}}">非理性消费</span>共<span wx:if="{{isincome==0}}">支出</span><span
+          wx:if="{{isincome==1}}">收入</span>(元)
+      </view>
+      <view class="top_detail">
+        <view class="top_money">
+          <span style="font-size:16px;">￥</span>{{number.toFix2(sumMoney)}}
+        </view>
+        <view class="order_selector">
+          <span class="{{selector==item.value?'order_button active':'order_button'}}" wx:for="{{select}}" wx:key="index" data-select="{{item.value}}" bindtap="checkSelect">{{item.name}}</span>
+        </view>
+      </view>
+      <view class="order_count">
+        <span>共消费 </span><span class="account_length">{{account.length}}</span><span> 笔</span>
+      </view>
+    </view>
+
+    <!-- 灰色分割线 -->
+    <view class="split"></view>
+
+    <!-- 排序详情 -->
+    <view class="order_detail">
+      <view class="order_detail_text">按<span wx:if="{{selector=='money'}}">金额</span><span wx:if="{{selector=='time'}}">时间</span>排序</view>
+
+      <view class="order_item" wx:for="{{pageSize>account.length?account.length:pageSize}}" wx:key="index"
+        data-id="{{account[index].aid}}" bindtap="goDetail">
+        <view>
+          <iconfont name="{{account[index].methods.iconfont}}"></iconfont>
+        </view>
+        <view class="item_information">
+          <view class="account_information">
+            <view>
+              <view>{{account[index].methods.pname}}</view>
+              <view wx:if="{{account[index].remark!=null&&account[index].remark!=''}}" class="item_text">{{account[index].remark}}</view>
+            </view>
+            <view class="item_right">
+              <view>￥{{number.toFix2(account[index].money)}}</view>
+              <view class="item_text">{{date.formatMonth(account[index].createTime,'text')}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <!-- <view class="order_item">
+        <view>
+          <iconfont name="churuzheng"></iconfont>
+        </view>
+        <view class="item_information">
+          <view class="account_information">
+            <view>
+              <view>转账</view>
+              <view class="item_text">转账给隔壁老王</view>
+            </view>
+            <view class="item_right">
+              <view>￥50.00</view>
+              <view class="item_text">2月9日</view>
+            </view>
+          </view>
+        </view>
+      </view> -->
+
+    </view>
+
+    <view class="load">
+      <i-load-more loading="{{ low }}" />
+    </view>
+
+    <!-- 底部view -->
+    <view class="low"></view>
+
+  </view>
+</scroll-view>

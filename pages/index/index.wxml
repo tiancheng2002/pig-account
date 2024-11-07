@@ -1,0 +1,203 @@
+<wxs module="number" src="../../utils/number.wxs"></wxs>
+<wxs module="date" src="../../utils/common.wxs"></wxs>
+<view style="padding-bottom:120rpx" wx:if="{{isvisible}}">
+  <!-- 顶部导航栏 -->
+  <view class="account_top">
+    <view class="account_top_view">
+      <view class="myAccount_top">
+        <view class="top_date">
+          <view>
+            <span class="month">{{monthText[month]}}月</span>
+            <span class="year">{{year}}</span>
+          </view>
+          <view>
+            <view>
+              <span bindtap="beforeMonth" style="margin-right: 6px;" class="month_icon">
+                <van-icon color="white" name="arrow-left" />
+              </span>
+              <span bindtap="nextMonth" class="month_icon">
+                <van-icon color="white" name="arrow" />
+              </span>
+            </view>
+          </view>
+        </view>
+        <view class="book-select">
+          <van-icon size="28px" color="#2F4858" name="newspaper-o" />
+          <view class='com-selectBox'>
+            <view class='com-sContent' style="border-radius: {{radius==0?'10px 10px 0 0':'10px'}};" bindtap='selectToggle'>
+              <image wx:if="{{nowText.text!='全部'}}" class="booksImg" src="{{nowText.img}}"></image>
+              <view class='com-sTxt'>{{nowText.text}}</view>
+            </view>
+            <view class='com-sList' wx:if="{{selectShow}}">
+              <view class="book-text" data-bid="0" data-name="全部" data-img="" class='com-sItem' bindtap='setText'>全部</view>
+              <view wx:for="{{books}}" wx:key="{{index}}" class='com-sItem' bindtap='setText' data-bid="{{item.bid}}" data-name="{{item.bname}}" data-img="{{item.bimg}}">
+                <image class="booksImg" src="{{item.bimg}}"></image>
+                <span class="booksName">{{item.bname}}</span>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <!-- <view class="top_date">
+        <view class="beforeMonth">
+          <i-icon size="40" color="#ff9900" type="play_fill" bindtap="beforeMonth" />
+        </view>
+        <view>
+          <view class="top_date_year">{{year}}年</view>
+          <view class="top_date_month">{{monthText[month]}}月</view>
+        </view>
+        <view>
+          <i-icon size="40" color="#ff9900" type="play_fill" bindtap="nextMonth" />
+        </view>
+      </view> -->
+      <view class="top_money_view">
+        <view class="top_pay">
+          <view class="top_pay_text">支出</view>
+          <view class="pay_detail">￥<span class="pay_money">{{payMoney?number.toFix2(payMoney):'0.00'}}</span></view>
+        </view>
+        <view class="top_income">
+          <view class="top_income_text">收入</view>
+          <view class="pay_detail">￥<span class="pay_money">{{incomeMoney?number.toFix2(incomeMoney):'0.00'}}</span></view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- <view class="bill_top">
+    <view class="bill_date">
+      <view class="top_text">2022</view>
+      <view>1月</view>
+    </view>
+    <view class="bill_statistics">
+      <view>
+        <view class="top_text">月收入</view>
+        <view>100.00</view>
+      </view>
+      <view>
+        <view class="top_text">月支出</view>
+        <view>100.00</view>
+      </view>
+    </view>
+    <view class="bill_statistics">
+      <view>
+        <view class="top_text">日收入</view>
+        <view>100.00</view>
+      </view>
+      <view>
+        <view class="top_text">日支出</view>
+        <view>100.00</view>
+      </view>
+    </view>
+  </view> -->
+  <!-- 透明顶出框 -->
+  <!-- <view class="opacity"></view> -->
+
+  <!-- 账单内容 -->
+  <view wx:if="{{account.length!=0}}" class="account_context">
+    <span class="context_text">本月账单</span>
+  </view>
+
+  <!-- <view>
+    <view class="bill_context" wx:if="{{item.account.length!=0&&account!=null}}" wx:for="{{account}}" wx:key="index">
+      <view class="context_detail">
+        <span class="context_date">{{date.formatMonth(index,'text')}}</span>
+        <span class="context_date">{{date.formatWeek(index)}}</span>
+        <span wx:if="{{date.formatTime(index)==today}}" class="today">今日</span>
+        <span class="context_pay"><span class="context_income_text">收 </span><span>{{number.toFix2(item.income!=null?item.income:0)}}</span></span>
+        <span class="context_pay"><span class="context_pay_text">支 </span><span>{{number.toFix2(item.pay!=null?item.pay:0)}}</span></span>
+      </view>
+      <view wx:for="{{item.account}}" wx:key="accountKey" wx:for-item="accountItem" class="context_bill" data-number="{{accountItem.aid}}" bindtap="detail">
+        <view class="bill_item">
+          <view>
+            <iconfont name="{{accountItem.methods.iconfont}}"></iconfont>
+          </view>
+          <view class="bill_information">
+            <view class="bill_method">{{accountItem.methods.pname}}</view>
+            <view class="bill_remark">{{accountItem.remark!=''&&accountItem.remark!=null?accountItem.remark:''}}</view>
+          </view>
+        </view>
+        <view style="text-align:right;">
+          <view class="{{accountItem.isincome==0?'pay_text':'income_text'}}">
+            <span wx:if="{{accountItem.isincome==0}}">-</span>
+            <span wx:if="{{accountItem.isincome==1}}">+</span>
+            {{number.toFix2(accountItem.money)}}
+          </view>
+          <view wx:if="{{accountItem.consumePay=='true'}}">
+            <span class="consumpay">非理性消费</span>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view> -->
+
+  <view>
+    <view class="bill_context" wx:for="{{account}}" wx:key="index">
+      <view class="context_detail">
+        <span class="context_date">{{date.formatMonth(item.createTime,'text')}}</span>
+        <span class="context_date">{{date.formatWeek(item.createTime)}}</span>
+        <span wx:if="{{date.formatTime(item.createTime)==today}}" class="today">今日</span>
+        <span class="context_pay"><span class="context_income_text">收 </span><span>{{item.incomeMoney==null?number.toFix2(0):number.toFix2(item.incomeMoney)}}</span></span>
+        <span class="context_pay"><span class="context_pay_text">支 </span><span>{{item.payMoney==null?number.toFix2(0):number.toFix2(item.payMoney)}}</span></span>
+      </view>
+      <view wx:for="{{item.accounts}}" wx:key="accountKey" wx:for-item="accountItem" class="context_bill" data-number="{{accountItem.aid}}" bindtap="detail">
+        <view class="bill_item">
+          <view>
+            <iconfont name="{{accountItem.methods.iconfont}}"></iconfont>
+          </view>
+          <view class="bill_information">
+            <view class="bill_method">{{accountItem.methods.pname}}</view>
+            <view class="bill_remark">{{accountItem.remark!=''&&accountItem.remark!=null?accountItem.remark:''}}</view>
+          </view>
+        </view>
+        <view style="text-align:right;">
+          <view class="{{accountItem.isincome==0?'pay_text':'income_text'}}">
+            <span wx:if="{{accountItem.isincome==0}}">-</span>
+            <span wx:if="{{accountItem.isincome==1}}">+</span>
+            {{number.toFix2(accountItem.money)}}
+          </view>
+          <view wx:if="{{accountItem.consumePay=='true'}}">
+            <span class="consumpay">非理性消费</span>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 记账图标 -->
+  <view bindtap="take" class="account_icon">
+    <i-icon size="30" color="white" type="brush_fill" />
+  </view>
+
+  <!-- <view class="noUserInfo" wx:if="{{isLogin}}">
+    <view>
+      <view class="info">暂无授权信息</view>
+      <view class="info_icon">
+        <i-icon type="unfold" size="40" color="#ff9900" />
+      </view>
+      <view>
+        <button bindtap="goLogin" class="loginButton">前往授权</button>
+      </view>
+    </view>
+  </view> -->
+
+  <!-- 每日首次签到提示框 -->
+  <!-- <van-overlay show="{{show}}">
+    <view class="closeImg">
+      <van-icon bindtap="onClickHide" color="white" size="24px" name="close" />
+    </view>
+    <view class="dayImg">
+      <image mode="widthFix" src="http://image.xiaozhu02.top/day.png"></image>
+    </view>
+  </van-overlay> -->
+
+  <!-- 空提示 -->
+  <view>
+    <van-empty wx:if="{{login&&account.length==0}}" image="http://image.xiaozhu02.top/%E6%9A%82%E6%97%A0%E8%AE%B0%E5%BD%95.png" description="暂无账单记录" />
+    <!-- 未登录 -->
+    <van-empty wx:if="{{!login}}" image="http://image.xiaozhu02.top/%E6%97%A0%E7%BD%91%E7%BB%9C.png" description="还没有登录哦" />
+  </view>
+
+
+  <!-- <view wx:if="{{account.length==0&&isImage}}" class="account_image">
+    <image width="100%" height="100%" src="{{isImage?'https://pic.imgdb.cn/item/6220bf145baa1a80abda6758.png':''}}"></image>
+  </view> -->
+</view>

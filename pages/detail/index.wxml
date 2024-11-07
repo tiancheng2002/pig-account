@@ -1,0 +1,79 @@
+<wxs module="common" src="../../utils/common.wxs"></wxs>
+<wxs module="filters" src="../../utils/number.wxs"></wxs>
+
+<view class="detail">
+  
+  <!-- 非理性消费图片 -->
+  <image wx:if="{{detail.consumePay=='true'}}" class="consumepay_img" src="https://pic.imgdb.cn/item/620f788c2ab3f51d91f85c22.png"></image>
+
+  <view class="account_detail">
+    <view style="width:100%">
+      <view class="account_detail_icon">
+        <view class="icon_view">
+          <iconfont name="{{detail.methods.iconfont}}"></iconfont>
+        </view>
+        <view>{{detail.methods.pname}}</view>
+      </view>
+      <view class="account_money">
+          <span wx:if="{{detail.isincome==0}}">-</span><span wx:if="{{detail.isincome==1}}">+</span>{{filters.toFix2(detail.money)}}
+      </view>
+      <view style="margin:0 32px;">
+        <view style="display:flex">
+          <view class="detail_list">
+            <view class="account_detail_item">
+              支付
+            </view>
+            <view class="account_detail_item">
+              记账日期
+            </view>
+            <view class="account_detail_item">
+              备注信息
+            </view>
+            <view style="height: 30px;line-height: 30px;" class="account_detail_item">
+              来源
+            </view>
+          </view>
+          <view style="width: 100%;">
+            <view class="account_detail_item">
+              {{pname}}
+            </view>
+            <view class="account_detail_item">
+              {{common.formatTime(detail.createTime)}}
+            </view>
+            <view class="account_detail_item remark">
+              {{detail.remark!=null?detail.remark:'无备注信息'}}
+            </view>
+            <view class="account_detail_item remark img">
+              <view class="account_detail_img_div">
+                <image class="account_detail_img" src="{{detail.book.bimg}}"></image>
+              </view>
+              <view class="account_detail_bookName">
+                {{detail.book.bname}}
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <view class="account_detail_action" wx:if="{{user.uid==detail.user.uid}}">
+          <view class="action_editor" bindtap="{{detail.methods.pid!=12?'editor':''}}">
+            <i-icon type="editor" size="16" color="{{detail.methods.pid!=12?'#ff9900':'gray'}}" /><span style="color:{{detail.methods.pid!=12?'#ff9900':'gray'}}" class="editor_text">编辑</span>
+          </view>
+          <view bindtap="delete" class="action_delete">
+            <i-icon type="trash" size="16" color="#ed3f14" /><span class="delete_text">删除</span>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- <i-modal title="删除确认" visible="{{ visible5 }}" actions="{{ actions5 }}" bind:click="handleClick5">
+    <view>删除后无法恢复哦</view>
+  </i-modal> -->
+
+  <van-dialog id="van-dialog" use-slot show="{{visible5}}" show-cancel-button title="删除账单确认" bind:confirm="handleClick5" bind:cancel="close">
+    <view class="noticeText">删除后无法恢复哦</view>
+  </van-dialog>
+
+  <i-message id="message" />
+
+</view>

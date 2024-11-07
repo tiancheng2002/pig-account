@@ -1,0 +1,98 @@
+/* 
+  顶部固定框
+*/
+.order_top{
+  padding:24px;
+  background-color: rgba(166, 204, 151, 0.637);
+  border-radius: 0 0 10px 10px;
+}
+.order_date{
+  font-size:13px;
+  color:rgba(0,0,0,0.5);
+}
+.top_detail{
+  display:flex;
+  width:100%;
+  align-items:center;
+  margin-top:12px;
+}
+.top_money{
+  font-size:32px;
+  color: rgb(39, 155, 64);
+  font-weight:bold;
+}
+.order_selector{
+  width:100%;
+  text-align:right;
+}
+.order_count{
+  margin-top:24px;
+  font-size:13px;
+}
+.account_length{
+  font-size: 16px;
+  font-weight: bold;
+  color: rgb(39, 155, 64);
+}
+.order_count span:nth-child(1),.order_count span:nth-child(3){
+  color:rgba(0,0,0,0.5);
+}
+.order_button{
+  font-size: 14px;
+  padding: 3px 5px;
+  color: rgba(67, 165, 67, 0.555);
+  background-color: rgb(245, 245, 245);
+  margin-left: 10px;
+  border-radius: 5px;
+}
+.order_button.active{
+  color: white;
+  background-color: rgb(39, 155, 64);
+}
+
+/* 
+  排序详情
+*/
+.order_detail{
+  padding: 16px;
+}
+.order_detail_text{
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+.order_item{
+  display:flex;
+  align-items:center;
+}
+.item_information{
+  display:flex;
+  align-items:center;
+  border-bottom:1px solid rgb(235, 235, 235);
+  height:80px;
+  width:100%;
+  margin-left:16px;
+}
+.account_information{
+  display:flex;
+  justify-content:space-between;
+  align-items: center;
+  width:100%;
+}
+.item_text{
+  font-size:13px;
+  color:rgba(0,0,0,0.5);
+}
+.item_right{
+  text-align:right;
+}
+
+/* 
+  底部加载
+*/
+.load{
+  margin-top: 32px;
+  margin-bottom: 48px;
+}
+.low{
+  height: 60px;
+}

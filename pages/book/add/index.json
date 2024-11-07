@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "van-button": "@vant/weapp/button/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-picker": "@vant/weapp/picker/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "i-toast": "../../../dist/toast/index",
+    "van-overlay": "@vant/weapp/overlay/index",
+    "van-notify": "@vant/weapp/notify/index"
+  }
+}

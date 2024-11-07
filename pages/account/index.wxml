@@ -1,0 +1,178 @@
+<!-- <wxs module="date" src="../../utils/common.wxs"></wxs> -->
+<view style="height:100%">
+
+  <!-- <view class="books">
+    <van-icon style="margin-left:24px" size="30px" color="#ff9900" bindtap="checkBooks" wx:if="{{checkBook.bid==null}}" name="newspaper-o" />
+    <view bindtap="checkBooks" wx:if="{{checkBook.bid!=null}}" class="book">
+      <view>
+        <image class="book_img" src="{{checkBook.img}}"></image>
+      </view>
+      <view class="book_name">{{checkBook.name}}</view>
+    </view>
+  </view> -->
+
+  <!-- <view style="position: absolute; left: 12px;height: {{navigationHeight+44}}px;line-height: {{navigationHeight+44}}px;">
+    <van-icon size="20px" name="arrow-left" />
+  </view> -->
+
+  <view style="height: {{navigationHeight+44}}px;">
+    <view class="pay_method" style="padding-top: {{navigationHeight}}px;position: relative;">
+      <span style="position: absolute;left: 12px;margin-top: 5px;">
+        <van-icon bindtap="goBack" size="20px" name="arrow-left" />
+      </span>
+      <view>
+        <view wx:for="{{pay}}" wx:key="index" class="{{payChecked==item.id?'pay_income active':'pay_income'}}" data-pay="{{item.id}}" bindtap="payChange">{{item.text}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view>
+    <view class='com-selectBox'>
+      <view class='com-sContent' style="border-radius: {{radius==0?'10px 10px 0 0':'10px'}};border: 1px solid #e2e2e2;{{radius==0?'border-bottom: 0px':''}}" bindtap='selectToggle'>
+        <image wx:if="{{nowText.bid!=0}}" class="booksImg" src="{{nowText.img}}"></image>
+        <view class='com-sTxt'>{{nowText.text}}</view>
+      </view>
+      <view style="border: 1px solid #e2e2e2;border-top: 0px;" class='com-sList' wx:if="{{selectShow}}">
+        <view class="book-text" data-bid="0" data-name="选择账本" data-img="" class='com-sItem' bindtap='setText'>选择账本</view>
+        <view wx:for="{{books}}" wx:key="{{index}}" class='com-sItem' bindtap='setText' data-bid="{{item.bid}}" data-name="{{item.bname}}" data-img="{{item.bimg}}">
+          <image class="booksImg" src="{{item.bimg}}"></image>
+          <span class="booksName">{{item.bname}}</span>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="method_view" style="height:{{payMethodHeight}}px">
+    <view class="methods">
+      <view bindtap="checkMethod" data-method="{{item.pid}}" class="{{item.pid==methodChecked?'pay_icon active':'pay_icon'}}" wx:for="{{pay_methods}}" wx:key="index">
+        <view class="icon_view">
+          <iconfont name="{{item.iconfont}}"></iconfont>
+        </view>
+        <view class="pay_icon_text">{{item.pname}}</view>
+      </view>
+      <!-- <view class="pay_icon active">
+        <i-icon type="accessory" size="40" color="#ff9900" />
+        <view class="pay_icon_text">日常生活</view>
+      </view>
+      <view class="pay_icon">
+        <i-icon type="label_fill" size="40" color="#ff9900" />
+        <view class="pay_icon_text">饮食</view>
+      </view>
+      <view class="pay_icon">
+        <i-icon type="accessory" size="40" color="#ff9900" />
+        <view class="pay_icon_text">饮料</view>
+      </view>
+      <view class="pay_icon">
+        <i-icon type="accessory" size="40" color="#ff9900" />
+        <view class="pay_icon_text">衣服</view>
+      </view>
+      <view class="pay_icon">
+        <i-icon type="accessory" size="40" color="#ff9900" />
+        <view class="pay_icon_text">裤子</view>
+      </view>
+      <view class="pay_icon">
+        <i-icon type="accessory" size="40" color="#ff9900" />
+        <view class="pay_icon_text">鞋子</view>
+      </view> -->
+    </view>
+  </view>
+
+  <view class="account_bottom">
+    <view class="account_attach">
+      <view wx:if="{{methodChecked!=39&&payChecked!=1}}">
+        <span class="Irrational_consumption">非理性消费</span>
+        <i-switch value="{{switch}}" bind:change="onChange" slot="footer">
+          <i-icon type="right" slot="open"></i-icon>
+          <i-icon type="close" slot="close"></i-icon>
+        </i-switch>
+      </view>
+      <view class="iou" wx:if="{{methodChecked==39||methodChecked==11}}">
+        <span class="debit" bindtap="handleOpen1" data-peo="debit">借方</span>
+        <span class="return" bindtap="handleOpen1" data-peo="return">还方</span>
+      </view>
+      <!-- 借方输入框 -->
+      <!-- <i-modal title="{{peo=='debit'?'借方':'还方'}}" actions="{{modal}}" visible="{{ visible }}" bind:click="handleClose1">
+        <view class="modal_view">
+          <input class="modal_input" wx:if="{{peo=='debit'}}" placeholder="如：自己" value="{{debit}}" bindinput="inputDebit" />
+          <input class="modal_input" wx:if="{{peo=='return'}}" placeholder="如：自己" value="{{return}}" bindinput="inputReturn" />
+        </view>
+      </i-modal> -->
+
+      <van-dialog id="van-dialog" use-slot show="{{visible}}" show-cancel-button  title="{{peo=='debit'?'借方':'还方'}}" confirm-button-color="#ff9900" bind:confirm="editBudget" bind:cancel="closeBudget">
+        <van-cell-group custom-style="z-index:999">
+          <view class="modal_view">
+            <input class="modal_input" wx:if="{{peo=='debit'}}" placeholder="如：自己" value="{{debit}}" bindinput="inputDebit" />
+            <input class="modal_input" wx:if="{{peo=='return'}}" placeholder="如：自己" value="{{return}}" bindinput="inputReturn" />
+          </view>
+        </van-cell-group>
+      </van-dialog>
+
+      <!-- 借方输入框 -->
+    </view>
+    <view class="account_bottom_input" style="padding-bottom:{{heightEquals==false?'34rpx':'0'}}">
+      <view class="account_bottom_textrea">
+        <view class="bottom_input_first">
+          <view class="pay_methods" style="padding:{{index==null?'16px 0':'0'}}">
+            <picker mode="selector" bindchange="bindPickerChange" value="{{index}}" range="{{payment}}" range-key="{{'name'}}">
+              <view class="picker">
+                <span wx:if="{{index==null}}">支付方式</span>
+                <iconfont style="background-color:pink" name="{{payment[index].iconfont}}"></iconfont>
+
+              </view>
+            </picker>
+          </view>
+          <view class="pay_information">
+            <input class="pay_remarks" value="{{remark}}" bindinput="inputRemark" placeholder="备注" maxlength="15" />
+            <span class="pay_money">￥{{money}}</span>
+          </view>
+        </view>
+        <view class="bottom_input" wx:for="{{input}}" wx:key="index" wx:for-item="item">
+          <view class="{{haveItem.class==null?'input_button':haveItem.class}}" wx:for="{{item.have}}" wx:key="haveIndex" wx:for-item="haveItem" style="font-size:13px" data-number="{{haveItem.text}}" bindtap="{{haveItem.bindtap}}">
+            <span>{{haveItem.text=="今日"?date:haveItem.text}}</span>
+            <!-- <picker wx:if="{{haveItem.text=='今日'}}" mode="date" start="2021-10-01" end="{{today}}" bindchange="bindDateChange">
+              <view class="picker">
+                {{date}}
+              </view>
+            </picker> -->
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 覆盖全屏幕 -->
+  <!-- <view wx:if="{{booksVisible}}" style="top:0;left:0;width: 100%;height: 100%;position: fixed;background-color: rgba(37, 37, 37, 0.411);display: flex;justify-content: center;align-items: center;">
+    <view style="background-color: white;">
+      <view>我的账本</view>
+      <view wx:for="{{myBooks}}" wx:key="index" bindtap="DefaultBook" data-book="{{item}}">
+        <view style="display: flex;">
+          <view>
+            <image style="width: 50px;height: 50px;" src="{{item.bimg}}"></image>
+          </view>
+          <view>
+            <span>{{item.bname}}</span><span>{{item.members}}</span><span>{{item.bid==default?'1':'0'}}</span>
+          </view>
+        </view>
+      </view>
+      <view>我加入的账本</view>
+      <view wx:for="{{joinBooks}}" wx:key="index" bindtap="DefaultBook" data-book="{{item}}">
+        <view style="display: flex;">
+          <view>
+            <image style="width: 50px;height: 50px;" src="{{item.bimg}}"></image>
+          </view>
+          <view>
+            <span>{{item.bname}}</span><span>{{item.members}}</span>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view> -->
+
+  <i-message navtop="true" id="message" />
+
+
+  <i-toast id="toast" />
+</view>
+
+<!-- 选择日期 -->
+<van-calendar show="{{ show }}" default-date="{{ date=='今日'?'':date }}" min-date="{{ minDate }}" max-date="{{ maxDate }}" bind:confirm="checkDate" bind:close="closeDate" />

@@ -1,0 +1,197 @@
+page{
+  background-color: #EDEDED;
+  padding-bottom: 68rpx;
+}
+/* 
+  账本信息
+*/
+.book_top{
+  position: relative;
+  width: 100%;
+  height: 280px;
+  border-radius: 0 0 50px 50px;
+  background-color: #4a4a4a21;
+}
+.book_bgImg{
+  width: 100%;
+  height: 100%;
+  filter: blur(10px);
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  border-radius: 0 0 50px 50px;
+}
+.book_first{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid white;
+}
+.book_info{
+  display: flex;
+  align-items: center;
+}
+.book_img{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+.book_name{
+  margin-left: 6px;
+}
+.book_second{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  /* background-color: #4a4a4a42; */
+
+}
+.book_third{
+  /* display: flex; */
+  padding: 24px;
+  /* background-color: #4a4a4a42; */
+}
+.third_text{
+  font-size: 14px;
+  color: #ffffff8a;
+}
+.third_money{
+  color: white;
+  font-size: 20px;
+  margin-left: 6px;
+}
+.month{
+  font-size: 36px;
+  color: #ff9900;
+  font-weight: bold;
+}
+.year{
+  color: white;
+}
+.month_icon{
+  padding: 5px 8px;
+  background-color: rgba(255, 255, 255, 0.404);
+  border-radius: 50%;
+}
+
+
+.members{
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  background-color: #ececec;
+  border-radius: 10px;
+  margin-top: 8px;
+}
+.member_head{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: 6px 0;
+}
+.member_info{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 8px;
+}
+.member_addTime{
+  font-size: 14px;
+  color: #80848f;
+}
+.member_remove{
+  margin-top: 3px;
+  font-size: 13px;
+  color: #ed3f14;
+}
+
+/* 
+  遮罩层样式
+*/
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.block {
+  background-color: #fff;
+  border-radius: 10px;
+  padding:  16px 8px;
+  width: 90%;
+  height: 400px;
+}
+.book_members{
+  height: 380px;
+  width: 100%;
+  overflow-y: scroll;
+}
+.inviteButton{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  padding:0!important;
+}
+/* .closeIcon{
+  padding: 5px 8px;
+  background-color: rgba(255, 255, 255, 0.404);
+  border-radius: 50%;
+  top: 0;
+  position: absolute;
+} */
+
+/* 
+  成员标签
+*/
+.idenity{
+  border-radius: 5px!important;
+  margin-left: 8px;
+}
+.user{
+  display: flex;
+  align-items: center;
+}
+.user_head{
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+.user_name{
+  margin-left: 5px;
+  font-size: 12px;
+  color: #80848f;
+}
+.member_count{
+  display: flex;
+  align-items: center;
+  margin-top: 3px;
+}
+.ji{
+  padding:2px 5px;
+  border-radius:50%;
+  font-size:14px;
+  font-weight:bold;
+  background-color:#fff7e5;
+  color:#ffae00;
+}
+.ji_count{
+  font-size: 14px;
+  margin-left: 5px;
+  color: #383838;
+  font-weight: bold;
+}
+.top_icon{
+  margin-left: 8px;
+  color: white;
+}
+.outBook{
+  color: #ed3f14;
+  font-size: 13px;
+}

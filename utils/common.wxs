@@ -1,0 +1,71 @@
+var formatTime = function (date) {
+var date = getDate(date)
+var year = date.getFullYear()
+var month = date.getMonth() + 1
+var day = date.getDate()
+var hour = date.getHours()
+var minute = date.getMinutes()
+var second = date.getSeconds()
+ 
+  return [year, month, day].map(formatNumber).join('-')
+}
+
+var formatDay = function(date){
+  var date = getDate(date)
+  var day = date.getDate()
+  return [day].map(formatNumber)
+}
+
+var formatMonth = function(date,option){
+  var date = getDate(date)
+  var month = date.getMonth() + 1
+  var day = date.getDate()
+  if(option=='text'){
+    return month + "月" + day +"日"
+  }else{
+    return month + "." + day
+  }
+}
+
+var formatYear = function(date){
+  var date = getDate(date)
+  var year = date.getFullYear()
+  var month = date.getMonth() + 1
+  var day = date.getDate()
+  return year + "年" + month + "月" + day +"日"
+}
+ 
+var formatNumber = function(n) {
+  n = n.toString()
+  return n[1] ? n : '0' + n
+}
+
+var formatWeek = function(date){
+  var date = getDate(date)
+  var week = date.getDay()
+  switch(week) {
+    case 0:
+      return '周日'
+    case 1:
+      return '周一'
+    case 2:
+      return '周二'
+    case 3:
+      return '周三'
+    case 4:
+      return '周四'
+    case 5:
+      return '周五'
+    case 6:
+      return '周六'
+  }
+}
+ 
+module.exports = {
+  formatTime: formatTime,
+  formatNumber: formatNumber,
+  formatDay: formatDay,
+  formatMonth: formatMonth,
+  formatYear: formatYear,
+  formatWeek: formatWeek
+}

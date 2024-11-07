@@ -1,0 +1,15 @@
+{
+  "usingComponents": {
+    "i-icon": "../../dist/icon/index",
+    "i-message": "../../dist/message/index",
+    "iconfont":"../../iconfont/iconfont",
+    "i-switch": "../../dist/switch/index",
+    "i-modal": "../../dist/modal/index",
+    "i-toast": "../../dist/toast/index",
+    "van-calendar": "@vant/weapp/calendar/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-dialog": "@vant/weapp/dialog/index"
+  },
+  "navigationBarTitleText": "记账",
+  "navigationStyle": "custom"
+}

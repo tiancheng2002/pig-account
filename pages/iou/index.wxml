@@ -1,0 +1,200 @@
+<wxs module="date" src="../../utils/common.wxs"></wxs>
+<wxs module="number" src="../../utils/number.wxs"></wxs>
+<view wx:if="{{iouVisible}}" class="IOU">
+  <!-- 头部背景 -->
+  <view class="iou_bg"></view>
+
+  <!-- <view style="height:50%;">
+
+    <view class="iou_top">
+      <view class="iou_top_item active">借款</view>
+      <view class="iou_top_item">还款</view>
+    </view>
+
+
+    <view class="table">
+      <view class="tr head">
+        <view class="th">日期</view>
+        <view class="th">借方</view>
+        <view class="th">还方</view>
+        <view class="th">借款金额</view>
+      </view>
+      <i-swipeout  i-class="i-swipeout-demo-item" actions="{{actions}}" toggle="{{toggle2}}" unclosable="{{true}}" bindchange="handlerCloseButton">
+        <view slot="content">
+          <view class="tr bg">
+            <view class="td">2022-01-29</view>
+            <view class="td">自己</view>
+            <view class="td">老王</view>
+            <view class="td">￥50.00</view>
+          </view>
+        </view>
+      </i-swipeout>
+      <i-swipeout  i-class="i-swipeout-demo-item" actions="{{actions}}" toggle="{{toggle2}}" unclosable="{{true}}" bindchange="handlerCloseButton">
+        <view slot="content">
+          <view class="tr">
+            <view class="td">2022-01-29</view>
+            <view class="td">自己</view>
+            <view class="td">老王</view>
+            <view class="td">￥50.00</view>
+          </view>
+        </view>
+      </i-swipeout>
+      <i-swipeout  i-class="i-swipeout-demo-item" actions="{{actions}}" toggle="{{toggle2}}" unclosable="{{true}}" bindchange="handlerCloseButton">
+        <view slot="content">
+          <view class="tr">
+            <view class="td">2022-01-29</view>
+            <view class="td">自己</view>
+            <view class="td">老王</view>
+            <view class="td">￥50.00</view>
+          </view>
+        </view>
+      </i-swipeout>
+      <i-swipeout  i-class="i-swipeout-demo-item" actions="{{actions}}" toggle="{{toggle2}}" unclosable="{{true}}" bindchange="handlerCloseButton">
+        <view slot="content">
+          <view class="tr">
+            <view class="td">2022-01-29</view>
+            <view class="td">自己</view>
+            <view class="td">老王</view>
+            <view class="td">￥50.00</view>
+          </view>
+        </view>
+      </i-swipeout>
+      <i-swipeout  i-class="i-swipeout-demo-item" actions="{{actions}}" toggle="{{toggle2}}" unclosable="{{true}}" bindchange="handlerCloseButton">
+        <view slot="content">
+          <view class="tr">
+            <view class="td">2022-01-29</view>
+            <view class="td">自己</view>
+            <view class="td">老王</view>
+            <view class="td">￥50.00</view>
+          </view>
+        </view>
+      </i-swipeout>
+      <i-swipeout  i-class="i-swipeout-demo-item" actions="{{actions}}" toggle="{{toggle2}}" unclosable="{{true}}" bindchange="handlerCloseButton">
+        <view slot="content">
+          <view class="tr">
+            <view class="td">2022-01-29</view>
+            <view class="td">自己</view>
+            <view class="td">老王</view>
+            <view class="td">￥50.00</view>
+          </view>
+        </view>
+      </i-swipeout>
+      <i-swipeout  i-class="i-swipeout-demo-item" actions="{{actions}}" toggle="{{toggle2}}" unclosable="{{true}}" bindchange="handlerCloseButton">
+        <view slot="content">
+          <view class="tr">
+            <view class="td">2022-01-29</view>
+            <view class="td">自己</view>
+            <view class="td">老王</view>
+            <view class="td">￥50.00</view>
+          </view>
+        </view>
+      </i-swipeout>
+    </view>
+  </view> -->
+
+  <view class="iou_top">
+    <view class="iou_top_detail">借款共 <span class="iou_count">{{iou_finish.length+iou_unfinish.length}}</span> 笔，合计</view>
+    <view class="iou_money"><span>￥</span><span>{{iouMoney}}</span></view>
+    <view>
+      <span class="iou_finish">已完成 <span class="iou_fcount">{{iou_finish.length}}</span> 笔</span><span class="iou_unfinish">剩余 <span class="iou_ucount">{{iou_unfinish.length}}</span> 笔</span>
+    </view>
+  </view>
+
+  <!-- 分割线 -->
+  <!-- <view class="split"></view> -->
+
+  <!-- 条件选择 -->
+  <!-- <view class="iou_selector">
+    <view wx:for="{{iou_button}}" wx:key="index" class="{{item.id==checked?'iou_button active':'iou_button'}}" data-index="{{item.id}}" bindtap="selector">
+      {{item.name}}
+    </view>
+  </view> -->
+  <view style="background-color: white;">
+  <van-tabs custom-class="iouTabs" color="#ff9900" title-active-color="#ff9900" active="{{ active }}" bind:change="onChange">
+    <van-tab title="全部"></van-tab>
+    <van-tab title="已完成"></van-tab>
+    <van-tab title="未完成"></van-tab>
+  </van-tabs>
+
+  <!-- <view class="iou_selector">
+    <view wx:for="{{iou_button}}" wx:key="index" data-index="{{item.id}}" bindtap="selector">
+      <view style="color:{{item.id==checked?'#ff9900':'black'}}">{{item.name}}</view>
+      <view wx:if="{{item.id==checked}}" class="iou_button">
+        <view class="button_line"></view>
+      </view>
+    </view>
+  </view> -->
+
+
+  <view class="iou_data">
+    <i-swipeout wx:if="{{checked==0||checked==2}}" bindtouchstart="" bindtouchmove="" bindtouchend="" i-class="i-swipeout-demo-item" actions="{{actions}}"
+      toggle="{{toggle2}}" unclosable="{{true}}" data-aid="{{item.aid}}" data-did="{{item.did}}" data-income="{{item.isincome}}"
+      bindchange="handlerCloseButton" wx:for="{{iou_unfinish}}" wx:key="index">
+      <view slot="content">
+        <view class="order_item">
+          <view>
+            <iconfont name="{{item.isincome==0?'jiekuandan':'jiekuandan-copy'}}"></iconfont>
+          </view>
+          <view class="item_information">
+            <view class="account_information">
+              <view>
+                <view style="margin-bottom:8px;"><span class="debit">借</span><span
+                    class="debit_name">{{item.dname}}</span></view>
+                <view><span class="return">还</span><span class="return_name">{{item.rname}}</span></view>
+              </view>
+              <view class="item_right">
+                <view style="font-size:16px">￥{{number.toFix2(item.dmoney)}}</view>
+                <view class="item_text">{{date.formatYear(item.ddate)}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </i-swipeout>
+    <view wx:if="{{checked==0||checked==1}}" class="order_item" wx:for="{{iou_finish}}" wx:key="index" style="opacity:0.5">
+      <view>
+        <iconfont name="{{item.isincome==0?'jiekuandan':'jiekuandan-copy'}}"></iconfont>
+      </view>
+      <view class="item_information">
+        <view class="account_information">
+          <view>
+            <view style="margin-bottom:8px;"><span class="debit">借</span><span class="debit_name">{{item.dname}}</span>
+            </view>
+            <view><span class="return">还</span><span class="return_name">{{item.rname}}</span></view>
+          </view>
+          <view class="item_right">
+            <view style="font-size:16px">￥{{number.toFix2(item.dmoney)}}</view>
+            <view class="item_text">{{date.formatYear(item.ddate)}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+</view>
+
+  <view>
+    <!-- 空提示 -->
+    <van-empty wx:if="{{iou_finish.length==0&&iou_unfinish.length==0}}" image="http://image.xiaozhu02.top/%E6%9A%82%E6%97%A0%E8%AE%B0%E5%BD%95.png" description="暂无账单记录" />
+  </view>
+
+</view>
+
+    <!-- 删除弹出框 -->
+    <!-- <i-modal title="删除确认" visible="{{ visible }}" actions="{{ actions2 }}" bind:click="deleteIOU">
+    <view>删除后无法恢复哦</view>
+    </i-modal> -->
+
+    <van-dialog id="van-dialog" use-slot show="{{visible}}" show-cancel-button title="删除借条确认" bind:confirm="deleteIOU" bind:cancel="close">
+      <view class="noticeText">删除后无法恢复哦</view>
+    </van-dialog>
+
+    <!-- <i-modal title="完成确认" visible="{{ fvisible }}" actions="{{ factions }}" bind:click="finishIOU">
+    <view>确认是否完成该借款</view>
+    </i-modal> -->
+
+    <van-dialog id="van-dialog" use-slot show="{{fvisible}}" show-cancel-button title="完成借条确认" bind:confirm="finishIOU" confirm-button-color="#19be6b" bind:cancel="closeFinish">
+      <view class="noticeText">确认是否完成该借款</view>
+    </van-dialog>
+
+    <i-message style="margin-top: 0px!important;" id="message" />

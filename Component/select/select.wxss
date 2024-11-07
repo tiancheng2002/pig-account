@@ -1,0 +1,63 @@
+.com-selectBox{
+  margin-left: 12px;
+  width: 200px;
+}
+.com-sContent{
+  border-radius: 10px;
+  background: white;
+  font-size: 16px;
+  position: relative;
+  height: 50px;
+  line-height: 50px;
+}
+.com-sImg{
+  position: absolute;
+  right: 10px;
+  top: 11px;
+  width: 16px;
+  height: 9px;
+  transition: all .3s ease;
+}
+.com-sTxt{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding:0 20px 0 12px;
+  font-size: 14px;
+}
+.com-sList{
+  background: white;
+  width: inherit;
+  position: absolute;
+  /* border: 1px solid #e2e2e2; */
+  border-top: none;
+  box-sizing: border-box;
+  z-index: 3;
+  max-height: 120px;
+  overflow: auto;
+  border-radius: 0 0 10px 10px;
+}
+.com-sItem{
+  height: 50px;
+  line-height: 50px;
+  border-top: 1px solid #e2e2e2;
+  padding: 0 6px;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+.com-sItem:first-child{
+  border-top: none;
+}
+.booksImg{
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+}
+.booksName{
+  margin-left: 8px;
+}

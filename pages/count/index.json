@@ -1,0 +1,14 @@
+{
+  "usingComponents": {
+    "i-icon": "../../dist/icon/index",
+    "ec-canvas": "../../ec-canvas/ec-canvas",
+    "i-button": "../../dist/button/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-datetime-picker": "@vant/weapp/datetime-picker/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "van-empty": "@vant/weapp/empty/index"
+  },
+  "navigationBarBackgroundColor": "#ffb341",
+  "navigationBarTitleText": "统计",
+  "navigationBarTextStyle": "white"
+}

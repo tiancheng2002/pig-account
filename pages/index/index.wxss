@@ -1,0 +1,258 @@
+page{
+  background-color: #EDEDED;
+  padding-bottom: 68rpx;
+}
+/* 
+  顶部导航栏
+*/
+.account_top{
+  display:flex;
+  justify-content:center;
+  text-align:center;
+  width:100%;
+  background-color:#EDEDED;
+  /* padding:16px 0;
+  margin-top:16px; */
+}
+.account_top_view{
+  width:100%
+}
+.top_date{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding: 0 12px;
+  height: 70px;
+}
+.month{
+  font-size: 36px;
+  color: white;
+  font-weight: bold;
+}
+.year{
+  color: white;
+}
+.month_icon{
+  padding: 5px 8px;
+  background-color: rgba(255, 255, 255, 0.404);
+  border-radius: 50%;
+}
+.beforeMonth{
+  transform:rotate(180deg);
+}
+.top_date_year{
+  font-size:16px;
+  color:rgba(0,0,0,0.7);
+}
+.top_date_month{
+  font-size:28px;
+  color:#ff9900;
+  font-weight:bold;
+}
+.top_money_view{
+  display:flex;
+  margin-top:24px;
+  width:100%;
+  text-align:left;
+}
+.top_pay,.top_income{
+  width:50%;
+  border-radius:10px;
+  padding:12px 12px;
+  margin:0 10px;
+  color: rgb(250, 149, 149);
+}
+.top_pay{
+  background-color:#FA5151;
+}
+.top_pay_text,.top_income_text{
+  font-size:13px;
+  color:white;
+}
+.pay_detail{
+  font-size:13px;
+  font-weight:bold;
+  margin-top:6px;
+  color:white;
+}
+.pay_money{
+  font-size:24px;
+}
+.top_income{
+  /* #C35353 */
+  background-color:#ff9900;
+}
+.myAccount_top{
+  background-color: #ffb341;
+  border-radius: 0 0 20px 20px;
+  padding-bottom: 16px;
+}
+
+/* 
+  本月账单
+*/
+.account_context{
+  text-align:center;
+  margin:24px 0;
+}
+.context_text{
+  background-color:white;
+  padding:3px 10px;
+  border-radius:10px;
+  font-size:15px;
+}
+
+/* 
+  账单内容
+*/
+/* .bill_context{
+  padding:10px;
+  background-color: #FBFBFB;
+  margin: 10px 10px;
+  border-radius: 10px;
+}
+.context_detail{
+  padding:5px 0
+}
+.context_date{
+  color: #2B2B2B;
+  font-weight: bold;
+  font-size:15px;
+  margin:0 5px;
+}
+.today{
+  margin-top: -2px;
+  margin-left: 10px;
+  padding:2px 5px;
+  color:white;
+  font-weight: bold;
+  background-color:#ff9900;
+  font-size:11px;
+  border-radius:5px;
+}
+.context_pay{
+  float:right;
+  margin:0 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.context_pay span:nth-child(1){
+  font-size:13px;
+}
+.context_pay span:nth-child(2){
+  margin-left: 5px;
+  font-size:13px;
+}
+.context_pay_text{
+  background-color: #e5f1ff;
+  color:#007aff;
+  font-weight: bold;
+  padding: 1px 3px;
+}
+.context_income_text{
+  background-color: #fff7e5;
+  color:#ffae00;
+  font-weight: bold;
+  padding: 1px 3px;
+}
+.context_bill{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background-color:rgb(240, 240, 240);
+  border-radius:10px;
+  padding: 20rpx 15rpx;
+  margin-top:10rpx;
+}
+.bill_item{
+  display:flex;
+  align-items:center;
+}
+.bill_information{
+  margin-left: 12px;
+}
+.bill_method{
+  font-size: 14px;
+}
+.bill_remark{
+  font-size:12px;
+  color:gray;
+}
+.bill_money{
+  text-align:right;
+}
+.pay_text{
+  color: #2B2B2B;
+  font-weight: bold;
+}
+.income_text{
+  font-weight: bold;
+  color:#ff9900
+} */
+
+/* 
+  记账图标
+*/
+.account_icon{
+  background-color:#ff9900;
+  width:80rpx;
+  height:80rpx;
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  bottom:0;
+  right:0;
+  position:fixed;
+  margin-bottom:180rpx;
+  margin-right:20rpx;
+  opacity: 0.7;
+}
+
+/* 
+  暂无账单图片
+*/
+.account_image{
+  text-align:center;
+  margin-top:64px;
+}
+
+/* 
+  没有授权
+*/
+.noUserInfo{
+  display:flex;
+  justify-content:center;
+  margin-top:64px;
+}
+.info{
+  color:rgba(0,0,0,0.7);
+  text-align:center;
+  font-weight:bold;
+}
+.info_icon{
+  text-align:center;
+  margin-bottom:-16px;
+}
+
+/* 
+  每日图片
+*/
+.dayImg{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dayImg>image{
+  border: 5px solid white;
+  border-radius: 10px;
+}
+.closeImg{
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+

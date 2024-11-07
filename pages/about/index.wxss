@@ -1,0 +1,34 @@
+/* 
+  关于小程序
+*/
+.app_image{
+  display:flex;
+  justify-content:center;
+  margin-top:32px;
+}
+image{
+  width:80px;height:80px;border-radius:10px;
+}
+.app_name{
+  text-align:center;
+}
+.about{
+  padding:24px;
+}
+.first_paragraph{
+  text-indent: 20px;
+}
+.second_paragraph{
+  text-indent: 20px;
+  margin-top:10px;
+}
+.connect{
+  background-color:#ffa825;
+  color: white;
+  width: 150px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 32px;
+}

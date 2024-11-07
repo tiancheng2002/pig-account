@@ -1,0 +1,268 @@
+/* 
+  顶部选择
+*/
+.month_top{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background-color: #ffb341;
+}
+.count_top,.top_date{
+  display:flex;
+  justify-content:center;
+  /* margin: 12px 0; */
+}
+.count_top_item,.date_item{
+  font-size:13px;
+  border-radius: 50px;
+  padding: 10rpx 35rpx;
+  margin:0 10rpx;
+}
+.count_top_item.active{
+  color: white;
+  background-color: #ff9900;
+}
+.date_item{
+  font-size: 12px;
+  padding: 5rpx 25rpx;
+}
+.date_item.active{
+  background-color: #ff990096;
+}
+.month{
+  font-size: 36px;
+  color: white;
+  font-weight: bold;
+}
+.year{
+  color: white;
+}
+
+/* 
+  日历表图
+*/
+.count_calendar{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content:center;
+  border-radius: 20px 20px 0 0;
+}
+.calendar_date{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:50px;
+  background-color:#f9f9f7;
+  font-size:18px;
+  font-weight:bold;
+}
+.calendar_week{
+
+  color:#f8c046;
+  font-weight:bold;
+  font-size:15px;
+}
+.calendar_item,.calendar_week{
+  display:flex;
+  justify-content:center;
+  width:14.28%;
+  background-color:#f9f9f7;
+  height:40px;
+  align-items:center;
+  text-align: center;
+}
+.calendar_money{
+  margin-top: -3px;
+  font-size: 10px;
+  color: #969696;
+}
+
+/* 
+  表格对应天数账单
+*/
+.order_detail{
+  margin: 16px 0;
+  margin-bottom: 16px;
+}
+.detail_pay{
+  font-size: 13px;
+  color: rgba(0,0,0,0.3);
+}
+.order_item{
+  display:flex;
+  align-items:center;
+}
+.item_information{
+  display:flex;
+  align-items:center;
+  border-bottom:1px solid rgb(235, 235, 235);
+  height:72px;
+  width:100%;
+  margin-left:16px;
+}
+.account_information{
+  display:flex;
+  justify-content:space-between;
+  align-items: center;
+  width:100%;
+}
+.item_text{
+  font-size:13px;
+  color:rgba(0,0,0,0.5);
+}
+.item_right{
+  text-align:right;
+}
+
+/* 
+  非理性支出
+*/
+.consumePay{
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.consumeButton{
+  border-radius: 5px;
+  font-size:13px;
+  color:rgb(255, 255, 255);
+  background-color:rgb(252, 77, 77);
+  padding:6px 24px;
+  margin-left: 8px;
+  margin-top: 8px;
+}
+
+/* 
+  统计图
+*/
+.count_title{
+  background-color:rgb(247,247,247);
+  padding:8px 16px;
+}
+.main{
+  z-index: -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 400rpx;
+}
+
+/* 
+  消费方式金额
+*/
+.method_count{
+  padding: 5px 16px;
+  background-color: rgb(245, 245, 245);
+}
+.method_count_item{
+  display:flex;
+  align-items:center;
+  height: 80px;
+}
+.method_information{
+  font-size: 13px;
+  display:flex;
+  align-items:center;
+  width:100%;
+  margin-left:16px;
+}
+.method_pay{
+  width:100%;
+}
+.method_precent{
+  width: 40%;
+  text-align: right;
+  font-size: 13px;
+  color: #424242;
+  font-weight: bold;
+}
+.pay_money{
+  margin-left: 10px;
+  font-size: 13px;
+  color: rgb(102, 102, 102);
+}
+.method_progress{
+  margin-top: 5px;
+}
+
+/* 
+  消费排行
+*/
+.count_sort{
+  font-size:15px;
+  margin-top:30px;
+  margin-bottom:12px;
+}
+.sorted{
+  padding:0 16px;
+}
+.sorted_item{
+  display:flex;
+  align-items:center;
+  width:100%;
+  padding:16px 0;
+}
+.sorted_item_number.first{
+  color: #ff9900;
+  font-weight: bold;
+}
+.sorted_item_number.second{
+  color: #fcba58;
+  font-weight: bold;
+}
+.sorted_item_number.third{
+  color: #ffce85;
+  font-weight: bold;
+}
+.sorted_item_number{
+  text-align: center;
+  width: 10%;
+  height: 24px;
+  color:rgba(0,0,0,0.5);
+}
+.sorted_item_information{
+  display:flex;
+  align-items:center;
+  width:100%;
+  margin-left:12px;
+}
+.information_text{
+  margin-left:12px;
+}
+.information_text view:nth-child(1){
+  font-size:15px;
+  margin-bottom:4px;
+}
+.information_text view:nth-child(2){
+  font-size:13px;
+  color:rgba(0,0,0,0.3);
+  height: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display:-webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.information_pay{
+  width:40%;
+  text-align:right;
+}
+.information_pay view:nth-child(1){
+  font-size:16px;
+  font-weight:bold;
+  margin-bottom:4px;
+}
+.information_pay view:nth-child(2){
+  font-size:13px;
+  color:rgba(0,0,0,0.3);
+}
+.order_all{
+  text-align:center;
+  color:rgba(0,0,0,0.5);
+  font-size:15px;
+}

@@ -1,0 +1,1 @@
+@import '../common/index.wxss';.van-circle{z-index: 1;display:inline-block;position:relative;text-align:center}.van-circle__text{color:var(--circle-text-color,#323233);left:0;position:absolute;top:50%;transform:translateY(-50%);width:100%;}

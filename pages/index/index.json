@@ -1,0 +1,14 @@
+{
+  "usingComponents": {
+    "i-icon": "../../dist/icon/index",
+    "iconfont":"../../iconfont/iconfont",
+    "select":"/Component/select/select",
+    "van-empty": "@vant/weapp/empty/index",
+    "van-overlay": "@vant/weapp/overlay/index",
+    "van-icon": "@vant/weapp/icon/index"
+
+  },
+  "navigationBarTitleText": "账单",
+  "navigationBarBackgroundColor": "#ffb341",
+  "navigationBarTextStyle": "white"
+}

@@ -1,0 +1,134 @@
+page{
+  background-color: #f3f3f3;
+}
+/* 
+  借款页面头部
+*/
+.iou_bg{
+  background-color: #ffb341;
+  width: 100%;
+  height: 100px;
+  border-radius: 0 0 50px 50px;
+}
+.iou_top{
+  padding:12px;
+  margin: -64px 16px 16px 16px;
+  background-color: rgb(230, 89, 89);
+  /* color: rgb(165, 165, 165); */
+  color: #f6f6f6;
+  /* box-shadow: 0px 0px 5px 0px rgb(161, 161, 161); */
+  border-radius: 10px;
+}
+.iou_top_detail{
+  font-size:13px;
+}
+.iou_count{
+  color:#ffae00;
+  font-weight:bold;
+  font-size:15px;
+}
+.iou_money{
+  margin:12px 0;
+  color:#ffae00;
+  font-weight:bold;
+}
+.iou_money span:nth-child(2){
+  font-size:28px;
+}
+.iou_finish{
+  font-size:13px;
+}
+.iou_fcount{
+  color:#ffae00;
+  font-weight:bold;
+  font-size:15px;
+}
+.iou_unfinish{
+  font-size:13px;
+  margin-left:12px;
+}
+.iou_ucount{
+  color:#ffae00;
+  font-weight:bold;
+  font-size:15px;
+}
+
+/* 
+  条件选择
+*/
+.iouTabs{
+  padding-bottom: 6px!important;
+}
+/* .iou_selector{
+  margin-top: 12px;
+  display:flex;
+  padding:0 10px;
+  justify-content:space-around;
+}
+.iou_button{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  margin-top:5px;
+}
+.button_line{
+  width:80%;
+  height:2px;
+  background-color:#ff9900;
+} */
+
+/* 
+  借条详情
+*/
+.iou_data{
+  margin-top: 12px;
+}
+.order_detail{
+  padding: 16px;
+}
+.order_item{
+  height: 80px;
+  display:flex;
+  align-items:center;
+  padding:0 12px;
+}
+.item_information{
+  display:flex;
+  align-items:center;
+  /* border-bottom:1px solid rgb(235, 235, 235); */
+  height:72px;
+  width:100%;
+  margin-left:16px;
+}
+.account_information{
+  display:flex;
+  justify-content:space-between;
+  align-items: center;
+  width:100%;
+}
+.item_text{
+  font-size:13px;
+  color:rgba(0,0,0,0.5);
+}
+.item_right{
+  text-align:right;
+}
+.debit,.return{
+  padding:3px 6px;
+  border-radius:50%;
+  font-size:15px;
+  font-weight:bold;
+}
+.debit{
+  background-color:#e5f1ff;
+  color:#007aff;
+}
+.debit_name,.return_name{
+  font-size:15px;
+  margin-left:10px;
+}
+.return{
+  background-color:#fff7e5;
+  color:#ffae00;
+}
+

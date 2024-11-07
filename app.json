@@ -1,0 +1,46 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/account/index",
+    "pages/count/index",
+    "pages/order/index",
+    "pages/iou/index",
+    "pages/detail/index",
+    "pages/mine/index",
+    "pages/book/book/index",
+    "pages/book/account/index",
+    "pages/book/add/index",
+    "pages/about/index",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+  "tabBar": {
+    "custom": true,
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text":"账单"
+    },{
+      "pagePath": "pages/count/index",
+      "text": "统计"
+    },{
+      "pagePath": "pages/mine/index",
+      "text": "我的"
+    }
+  ]
+  },
+  "usingComponents": {
+    "iconfont":"iconfont/iconfont",
+    "i-progress": "dist/progress/index",
+    "i-icon": "dist/icon/index",
+    "i-modal": "dist/modal/index",
+    "i-swipeout": "dist/swipeout/index",
+    "i-message": "dist/message/index",
+    "i-load-more": "dist/load-more/index"
+  }
+}

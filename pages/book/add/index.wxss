@@ -1,0 +1,68 @@
+page{
+  background-color: rgb(238, 238, 238);
+}
+.rightIcon{
+  width: 50px!important;
+  height: 50px!important;
+  border-radius: 10px!important;
+}
+
+/* 
+  遮罩层
+*/
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.block {
+  z-index: 999;
+  width: 280px;
+  height: 300px;
+  border-radius: 10px;
+  padding:12px;
+  background-color: #fff;
+  overflow-y: scroll;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+.Bicon{
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  margin: 5px;
+}
+
+/* 
+  底部保存按钮
+*/
+.button_bottom{
+  /* padding-bottom: 16px; */
+  position: fixed;
+  bottom: 0;
+  height: 70px;
+  background-color: white;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.save_button{
+  width: 55%;
+  height: 40px;
+  background-color: #ffb400;
+  color: black;
+  font-weight: bold;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+.default_button{
+  margin: 8px 0 0 8px;
+}

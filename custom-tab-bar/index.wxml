@@ -1,0 +1,12 @@
+<view style="padding-bottom:{{heightEquals==false?'34rpx':'0'}};background-color:white">
+  <i-tab-bar current="{{ current }}" color="#ff9900" bindchange="handleChange">
+    <i-tab-bar-item size="24" key="index" icon="activity" current-icon="activity_fill" title="账单"></i-tab-bar-item>
+    <i-tab-bar-item size="24" key="count" icon="task" current-icon="task_fill" title="统计"></i-tab-bar-item>
+    <i-tab-bar-item size="24" key="mine" icon="mine" current-icon="mine_fill" title="我的"></i-tab-bar-item>
+  </i-tab-bar>
+
+</view>
+
+
+
+

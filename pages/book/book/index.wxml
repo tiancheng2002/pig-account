@@ -1,0 +1,69 @@
+<view style="padding-bottom: 16px;" wx:if="{{visible}}">
+  <!-- 添加图标 -->
+  <view wx-if="{{login}}" class="book_top">
+    <view class="addBook" bindtap="addBook">
+      <span>添加账本</span><van-icon bindtap="addBook" size="16px" name="plus" />
+    </view>
+  </view>
+  <!-- 我的账本 -->
+  <view class="books">
+    <view><van-tag size="medium" round="true" color="#ffb400" plain type="primary">我的账本</van-tag></view>
+    <view wx:for="{{myBooks}}" wx:key="index" data-book="{{item}}" bindtap="bookDetail" class="book">
+      <view>
+        <image class="bimg" src="{{item.bimg}}"></image>
+      </view>
+      <view class="mybook">
+        <view style="width: 100%;">
+          <view>
+            <span>{{item.bname}}</span>
+            <van-tag wx-if="{{item.type==1}}" round type="primary" custom-class="bookMembers">
+              <van-icon name="user-o" /><span class="members">{{item.members}}</span>
+            </van-tag>
+          </view>
+          <view class="bookDescription">
+            <view>
+              {{item.book_description==null||item.book_description==''||item.book_description=='null'?'无':item.book_description}}
+            </view>
+            <view>
+              <van-tag color="#ea5455" wx-if="{{item.bid==default}}" round type="primary" custom-class="bookMembers">
+                默认
+              </van-tag>
+            </view>
+          </view>
+        </view>
+        <view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 我加入的账本 -->
+  <view class="books" wx:if="{{login&&joinBooks.length!=0}}">
+    <view><van-tag size="medium" round="true" color="#ea5455" plain type="primary">我加入的账本</van-tag></view>
+    <view wx:for="{{joinBooks}}" wx:key="index" data-book="{{item}}" bindtap="bookDetail" class="book">
+      <view>
+        <image class="bimg" src="{{item.bimg}}"></image>
+      </view>
+      <view class="joinBook">
+        <view>
+          <view>
+            <span>{{item.bname}}</span>
+            <van-tag round type="primary" custom-class="bookMembers">
+              <van-icon name="user-o" /><span class="members">{{item.members}}</span>
+            </van-tag>
+          </view>
+          <view class="bookDescription">
+            {{item.book_description==null||item.book_description==''||item.book_description=='null'?'无':item.book_description}}
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+  <view class="notice">
+    <!-- 空提示 -->
+    <van-empty wx:if="{{login==false}}" image="http://image.xiaozhu02.top/%E6%96%87%E4%BB%B6%E5%A4%B9%E7%A9%BA%E7%A9%BA%E5%A6%82%E4%B9%9F.png" description="没有账本哦，快去添加你的账本吧" />
+  </view>
+
+<!-- 轻提示框 -->
+<van-toast id="van-toast" />

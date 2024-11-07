@@ -1,0 +1,90 @@
+<page-meta page-style="{{ visible ? 'overflow: hidden;' : '' }}" />
+<view class="myadd">
+  <van-cell-group>
+    <van-field
+      label="账本图标"
+      input-align="right"
+      readonly="true"
+      right-icon="{{bimg}}"
+      use-button-slot
+      border="{{ true }}"
+      center="true"
+      size="large"
+      right-icon-class="rightIcon"
+      use-button-slot
+    >
+    <van-icon bindtap="showImg" name="arrow" slot="button" />
+    </van-field>
+    <van-field
+      label="账本名称"
+      input-align="right"
+      value="{{ bname }}"
+      placeholder="账本名称(最多10个字)"
+      border="{{ true }}"
+      center="true"
+      size="large"
+      custom-style="height:64px"
+      bind:input="inputName"
+      maxlength="10"
+    />
+    <van-field
+      label="账本描述"
+      input-align="right"
+      value="{{ description }}"
+      placeholder="请输入账本描述"
+      border="{{ true }}"
+      center="true"
+      size="large"
+      custom-style="height:64px"
+      bind:input="inputDesc"
+      maxlength="10"
+    />
+
+    <van-field
+      label="账本类型"
+      input-align="right"
+      value="{{ type }}"
+      readonly="true"
+      right-icon="arrow"
+      border="{{ true }}"
+      center="true"
+      size="large"
+      custom-style="height:64px;"
+      bind:click-icon="checkType"
+    />
+  </van-cell-group>
+
+  <view class="default_button">
+    <van-button color="#ff9900" custom-style="padding: 0 3px;" size="mini" wx-if="{{bid!=0}}" bindtap="defaultBook" type="primary">设为默认账本</van-button>
+  </view>
+
+  <van-popup
+  show="{{ visible }}"
+  round
+  position="bottom"
+  custom-style="height: 40%"
+  bind:close="close"
+  >
+    <van-picker title="选择账本类型" default-index="{{tid}}" show-toolbar="true" columns="{{ types }}"  bind:confirm="changeType" bind:cancel="close" />
+  </van-popup>
+  <i-toast id="toast" />
+  <!-- <van-toast id="van-toast" /> -->
+</view>
+
+<!-- 选择图标的遮罩层 -->
+<van-overlay custom-style="z-index:999;" bind:click="onClick" show="{{ show }}" lock-scroll="{{false}}">
+  <view class="wrapper">
+    <view class="block">
+      <view wx:for="{{imgs}}" wx:key="index">
+        <image bindtap="checkImg" data-img="{{index}}" class="Bicon" src="{{item}}"></image>
+      </view>
+    </view>
+  </view>
+</van-overlay>
+
+<van-notify id="van-notify" />
+
+<!-- 底部保存按钮 -->
+<view class="button_bottom" style="padding-bottom: {{bottom?'0px':'16px'}};">
+  <view bindtap="addBook" class="save_button">保存账本</view>
+</view>

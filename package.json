@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "mini-program-iconfont-cli": "^0.6.1"
+  },
+  "dependencies": {
+    "@vant/weapp": "^1.10.3"
+  }
+}

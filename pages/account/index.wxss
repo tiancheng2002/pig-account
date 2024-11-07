@@ -1,0 +1,187 @@
+page{
+  height: 100%;
+  overflow: hidden;
+}
+/* 
+  顶部标签选择
+*/
+.back{
+  left: 0;
+  position: fixed;
+  margin-left: 20px;
+  margin-top: 3px;
+}
+.pay_method{
+  display: flex;
+  justify-content: center;
+  text-align:center;
+  /* margin-top:10px; */
+}
+.pay_method > view {
+  width: 30%;
+  display: flex;
+  padding: 0.5px 0.5px;
+  justify-content: center;
+  border-radius: 5px;
+  border: 2px solid rgb(219, 219, 219);
+  background-color: rgb(219, 219, 219);
+}
+.pay_income{
+  width: 50%;
+  font-size: 12px;
+  padding: 5px 15px;
+  border-radius: 5px;
+}
+.pay_income.active{
+  background-color: white;
+}
+/* 
+  支付以及收入方式
+*/
+.method_view{
+  overflow: scroll;
+  display:flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+.methods{
+  display:flex;
+  flex-wrap: wrap;
+  padding:10px;
+  width:100%;
+  align-content: flex-start;  /* 消除间距 */
+}
+.pay_icon{
+  border-radius:10px;
+  width:19%;
+  text-align: center;
+  margin: 0 1px 16px 1px;
+  padding: 3px 0;
+}
+.pay_icon.active{
+  background-color: #ffdaa3;
+}
+.pay_icon_text{
+  margin-top: 2px;
+  font-size: 11px;
+}
+/* 
+  底部输入框
+*/
+.account_bottom{
+  bottom:0;
+  position:fixed;
+  width:100%;
+}
+.account_bottom_input{
+  height: 100%;
+  background-color:#f3b65b;
+}
+.account_bottom_textrea{
+  padding:5px;
+}
+.bottom_input_first{
+  display:flex;
+  align-items:center;
+  margin-bottom: 5px;
+}
+.pay_methods{
+  display: flex;
+  justify-content: center;
+  width: 20%;
+  font-size: 12px;
+  background-color:white;
+  border-radius:10px;
+  margin-right:5px;
+}
+.pay_information{
+  background-color:white;
+  padding:12px 5px;
+  border-radius:10px;
+  width:100%;
+  display:flex;
+}
+.pay_remarks{
+  width:90%;
+  padding: 0 10px;
+  font-size: 13px;
+}
+.pay_money{
+  text-align: right;
+  width: 28%;
+  overflow: hidden;
+  margin-right:10px;
+}
+.bottom_input{
+  display: flex;
+}
+.input_button{
+  border: 2px solid black;
+  width:25%;
+  background-color:white;
+  margin:2px;
+  text-align:center;
+  border-radius:10px;
+  padding:10px 0
+}
+.input_button.day{
+  background-color: #ef5e5e;
+  color: white;
+}
+.input_button.account{
+  background-color: #ff9900;
+  color: white;
+}
+/* 
+  非理性消费以及借方还方
+*/
+.account_attach{
+  margin-bottom:5px;
+  margin-left:10px;
+  display:flex;
+}
+.Irrational_consumption,.debit,.return{
+  font-size:13px;
+  margin-right:5px;
+  padding:3px 5px;
+  border:1px solid black;
+  border-radius:5px;
+}
+.iou{
+  margin-bottom: 3px;
+}
+.modal_view{
+  margin: 16px 0;
+  display:flex;
+  justify-content:center;
+}
+.modal_input{
+  border:1px solid rgba(0,0,0,0.2);
+  width:40%;
+  border-radius:10px;
+  color:black;
+  padding: 3px;
+  text-align: center;
+}
+
+/* 
+  账本
+*/
+.books{
+  position:fixed;
+  left: 15px;
+}
+.book{
+  display:flex;
+  align-items:center;
+}
+.book_img{
+  width: 35px;
+  height: 35px;
+  border-radius: 5px;
+}
+.book_name{
+  font-size: 13px;
+  color: #80848f;
+  margin-left: 3px;
+}

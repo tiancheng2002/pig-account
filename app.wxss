@@ -1,0 +1,253 @@
+.container {
+  /*  这里要注意，根据需要可以把  position: absolute;top: 0;bottom: 0;left: 0;right: 0;
+  换成 width: 100%; height: 80%;来实现页面的布局。
+  根据自己的需要改变即可，否则不会出页面。。。。
+*/
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+ec-canvas {
+  width: 100%;
+  height: 100%;
+}
+.icon_view{
+  display: flex;
+  justify-content: center;
+}
+
+/* 
+  灰色分割线
+*/
+.split{
+  margin-top: 12px;
+  height: 15rpx;
+  background-color: rgb(247, 247, 247);
+}
+
+/* 
+  非理性消费标注
+*/
+.consumpay{
+  font-size: 11px;
+  color: white;
+  background-color: rgb(247, 90, 90);
+  border-radius: 5px;
+  padding: 1px 3px;
+  text-align: center;
+}
+
+/* 
+  授权登录按钮
+*/
+.loginButton{
+  margin-top: 40px;
+  background-color: white;
+  border: 2px solid #ff9900;
+  color: #ff9900;
+}
+
+/* 
+  隐藏滚动条
+*/
+::-webkit-scrollbar{
+  display: none!important;
+  width: 0!important;
+  height: 0!important;
+  color: transparent!important;
+}
+
+/* 
+  提示
+*/
+.notice{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -1;
+}
+ 
+/* 
+  账本下拉选择框
+*/
+.com-selectBox{
+  margin-left: 12px;
+  width: 170px;
+}
+.com-sContent{
+  display: flex;
+  /* border-radius: 10px; */
+  background: white;
+  font-size: 16px;
+  position: relative;
+  height: 40px;
+  line-height: 40px;
+  align-items: center;
+  padding: 0 6px;
+}
+.com-sImg{
+  position: absolute;
+  right: 10px;
+  top: 11px;
+  width: 16px;
+  height: 9px;
+  transition: all .3s ease;
+}
+.com-sTxt{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding:0 20px 0 12px;
+  font-size: 14px;
+}
+.com-sList{
+  background: white;
+  width: inherit;
+  position: absolute;
+  /* border: 1px solid #e2e2e2; */
+  border-top: none;
+  box-sizing: border-box;
+  z-index: 3;
+  max-height: 120px;
+  overflow: auto;
+  border-radius: 0 0 10px 10px;
+}
+.com-sItem{
+  height: 40px;
+  line-height: 40px;
+  border-top: 1px solid #e2e2e2;
+  padding: 0 6px;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+.com-sItem:first-child{
+  border-top: none;
+}
+.booksImg{
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+}
+.booksName{
+  margin-left: 8px;
+}
+.book-select{
+  display: flex;
+  padding: 12px 0 12px 12px;
+}
+.book-text{
+  padding-left: 16px;
+  border-top: 1px solid #e2e2e2;
+}
+
+.noticeText{
+  text-align: center;
+  padding: 12px;
+  color: #bbbec4;
+  font-size: 14px;
+}
+
+/* 
+  账单内容
+*/
+.bill_context{
+  padding:10px;
+  background-color: #FBFBFB;
+  margin: 10px 10px;
+  border-radius: 10px;
+}
+.context_detail{
+  padding:5px 0
+}
+.context_date{
+  color: #2B2B2B;
+  font-weight: bold;
+  font-size:15px;
+  margin:0 5px;
+}
+.today{
+  margin-top: -2px;
+  margin-left: 10px;
+  padding:2px 5px;
+  color:white;
+  font-weight: bold;
+  background-color:#ff9900;
+  font-size:11px;
+  border-radius:5px;
+}
+.context_pay{
+  float:right;
+  margin:0 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.context_pay span:nth-child(1){
+  font-size:13px;
+}
+.context_pay span:nth-child(2){
+  margin-left: 5px;
+  font-size:13px;
+}
+.context_pay_text{
+  background-color: #e5f1ff;
+  color:#007aff;
+  font-weight: bold;
+  padding: 1px 3px;
+}
+.context_income_text{
+  background-color: #fff7e5;
+  color:#ffae00;
+  font-weight: bold;
+  padding: 1px 3px;
+}
+.context_bill{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background-color:rgb(240, 240, 240);
+  border-radius:10px;
+  padding: 0 15rpx;
+  height: 75px;
+  margin-top:10rpx;
+}
+.bill_item{
+  display:flex;
+  align-items:center;
+}
+.bill_information{
+  margin-left: 12px;
+}
+.bill_method{
+  font-size: 14px;
+}
+.bill_remark{
+  margin-top: 5px;
+  font-size:12px;
+  color:gray;
+}
+.bill_money{
+  text-align:right;
+}
+.pay_text{
+  color: #2B2B2B;
+  font-weight: bold;
+}
+.income_text{
+  font-weight: bold;
+  color:#ff9900
+}
