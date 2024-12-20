@@ -43,7 +43,7 @@ UI组件：Vant、IView
 
 ## 1.5 演示环境
 
-![输入图片说明](./docs/account.png)
+![输入图片说明](./docs/images/account.png)
 
 
 # 二、产品设计
