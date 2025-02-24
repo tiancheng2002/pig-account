@@ -2,7 +2,7 @@
 
 > 作者：xiaozhu
 
-Github：https://github.com/tiancheng2002/pig-account
+Gitee：[https://github.com/tiancheng2002/pig-account](https://gitee.com/i-like-potato-chips/pig-account)
 
 # 项目介绍
 
