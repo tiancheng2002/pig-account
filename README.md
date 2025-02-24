@@ -159,7 +159,7 @@ UI组件：Vant、IView
 
 需要本地部署或源码的+V：ACheng-0202
 
-<img src="C:\Users\18495\Documents\WeChat Files\wxid_5k61vcvcv0ny22\FileStorage\Temp\93853dd936b06de832a097cbb09c9f9.jpg" alt="93853dd936b06de832a097cbb09c9f9" width="50%" />
+<img src="image/wechat.jpg" alt="93853dd936b06de832a097cbb09c9f9" width="50%" />
 
 # 微信公众号
 
