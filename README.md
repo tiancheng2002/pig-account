@@ -63,20 +63,20 @@ UI组件：Vant、IView
 
 在首页可以查看到某个月的所有支出与收入情况，并且会根据日期对每一天的支出与收入进行划分，在顶部可以点击对应的年月进行切换，右侧还可以查看指定账本中的账单数据
 
-<img src="image/IMG_3680.png" width="33%" />
+<img src="image/IMG_3680.png" width="30%" />
 
 点击对应的账单数据就能查看到对应的详情，也可以对账单进行编辑，也可以将他删除
 
-<img src="image/IMG_3703.png" width="33%" />
+<img src="image/IMG_3703.png" width="30%" />
 
 ### 日历表展示
 
 在统计页的最上方会有一个日历表，会显示某个月的每一天的支出或收入金额，并且各自的颜色深度会随着金额的大小而变化，点击对应的日期还能查看到某一天的支出或收入情况
 
 <div style="display:flex">
-  <img src="image/IMG_3681.png" width="33%" />
+  <img src="image/IMG_3681.png" width="30%" />
 
-  <img src="image/IMG_3701.png" width="33%" />
+  <img src="image/IMG_3701.png" width="30%" />
 </div>
 
 
@@ -85,77 +85,90 @@ UI组件：Vant、IView
 
 在日历表的下方会有一个饼状统计图，主要是展示某个月支出或收入的占比，让用户可以清晰的感知自己在不同类别的消费或收入情况，点击下方对应类别会调转到账单排行页，里面可以查看某一类别的账单数据排行
 
-<img src="image/IMG_3702.png" width="33%" />
+<img src="image/IMG_3702.png" width="30%" />
 
 ### 账单排行
 
 在饼图的下方会有一栏账单排行的数据列表，会按照金额大小从高到低展示某月支出或收入的账单数据，如果数据超过十条的话，可以点击最下方的`全部排行`跳转到账单排行页进行查看，在里面可以按照金额或时间进行排序
 
-<img src="image/IMG_3704.png" width="33%" />
+<div style="display:flex">
+  <img src="image/IMG_3704.png" width="30%" />
 
-<img src="image/IMG_3682.png" width="33%" />
+  <img src="image/IMG_3682.png" width="30%" />
 
-<img src="image/IMG_3683.png" width="33%" />
+  <img src="image/IMG_3683.png" width="30%" />
+</div>
+
 
 ### 个人中心
 
 在个人中心页面，用户可以看到自己的记账天数以及记账笔数，还可以看到自己的剩余预算信息。点击头像名称或预算就会跳转到编辑页，在里面可以更改自己的头像、昵称以及预算信息
 
-<img src="image/IMG_3684.png" width="33%" />
-
-<img src="image/IMG_3685.png" width="33%" />
-
-<img src="image/IMG_3706.png" width="33%" />
+<div style="display:flex">
+  <img src="image/IMG_3684.png" width="30%" />
+  
+  <img src="image/IMG_3685.png" width="30%" />
+  
+  <img src="image/IMG_3706.png" width="30%" />
+</div>
 
 ### 记账功能
 
 在记账页中，用户可以自主的选择对应的类别、支付方式、要记录的账本以及输入金额和备注等信息，然后点击记账按钮就可以轻松的完成一笔记账啦
 
-<img src="image/IMG_3686.png" width="33%" />
-
-<img src="image/IMG_3687.png" width="33%" />
+<div style="display:flex">
+  <img src="image/IMG_3686.png" width="30%" />
+  
+  <img src="image/IMG_3687.png" width="30%" />
+</div>
 
 ### 自定义类别
 
 在自定义类别页，用户可以自定义自己的类别内容，目前暂不支持自定义类别图标，只能添加对应的文字。可以有选择性的定义不同的支出或收入类别
 
-<img src="image/IMG_3699.png" width="33%" />
-
-<img src="image/IMG_3700.png" width="33%" />
+<div style="display:flex">
+  <img src="image/IMG_3699.png" width="30%" />
+  
+  <img src="image/IMG_3700.png" width="30%" />
+</div>
 
 ### 自定义账本
 
 在我的账本页中用户可以看到自己创建和加入的账本信息，如果是公开账本的话，就会显示对应账本的加入人数和最大人数，点击下方的添加按钮会跳转到账本添加页
 
-<img src="image/IMG_3694.png" width="33%" />
+<img src="image/IMG_3694.png" width="30%" />
 
 在账本添加页中，可以对添加账本也可以对账本信息进行编辑，用户可以选择系统的图标也可以自定义上传图标
 
-<img src="image/IMG_3692.png" width="33%" />
+<img src="image/IMG_3692.png" width="30%" />
 
 ### 账本账单页
 
 在该页面中会显示该账本的所有账单信息，如果是公开账本的话，在每一条账单记录下都会有对应记账人的头像和昵称。点击右上角的设置会显示菜单栏，目前菜单栏只有查看成员、邀请成员、编辑账本、解散账本这四个选项。
 
-<img src="image/IMG_3695.png" width="33%" />
-
-<img src="image/IMG_3698.png" width="33%" />
-
-<img src="image/IMG_3696.png" width="33%" />
-
-<img src="image/IMG_3697.png" width="33%" />
+<div style="display:flex">
+  <img src="image/IMG_3695.png" width="30%" />
+  
+  <img src="image/IMG_3698.png" width="30%" />
+  
+  <img src="image/IMG_3696.png" width="30%" />
+  
+  <img src="image/IMG_3697.png" width="30%" />
+</div>
 
 ### AI聊天记账
 
 在记账页点击自动记账就会跳转到AI自动记账页，用户只需输入或上传对应的账单图片，即可快速完成记账，系统会自动提取对应的类别。图片识别也采用OCR的方式，将账单文字提取出来后，交给AI帮我们完成记账操作。
 
-<img src="image/IMG_3689.png" width="33%" />
-
-<img src="image/IMG_3688.png" width="33%" />
-
-<img src="image/IMG_3690.png" width="33%" />
-
-<img src="image/IMG_3691.png" width="33%" />
+<div style="display:flex">
+  <img src="image/IMG_3689.png" width="30%" />
+  
+  <img src="image/IMG_3688.png" width="30%" />
+  
+  <img src="image/IMG_3690.png" width="30%" />
+  
+  <img src="image/IMG_3691.png" width="30%" />
+</div>
 
 # 源码说明
 
