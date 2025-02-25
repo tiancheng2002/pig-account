@@ -73,9 +73,13 @@ UI组件：Vant、IView
 
 在统计页的最上方会有一个日历表，会显示某个月的每一天的支出或收入金额，并且各自的颜色深度会随着金额的大小而变化，点击对应的日期还能查看到某一天的支出或收入情况
 
-<img src="image/IMG_3681.png" width="33%" />
+<div style="display:flex">
+  <img src="image/IMG_3681.png" width="33%" />
 
-<img src="image/IMG_3701.png" width="33%" />
+  <img src="image/IMG_3701.png" width="33%" />
+</div>
+
+
 
 ### 统计图展示
 
