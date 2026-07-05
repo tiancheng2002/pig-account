@@ -61,7 +61,7 @@ UI组件：Vant、IView
 
 # Agent工作流程图
 
-<img src="image/IMG_3711.png" width="50%" />
+<img src="image/IMG_3711.png" width="80%" />
 
 # 功能演示
 
