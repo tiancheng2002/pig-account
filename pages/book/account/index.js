@@ -49,7 +49,13 @@ Page({
     })
   },
   delBook(e){
-    if(this.data.bookName!=this.data.book.bname){
+    let user = wx.getStorageSync('userInfo')
+    if(!user||!user.uid||user.uid!=this.data.hostId){
+      $Toast({
+        content: "无权限删除该账本",
+        type: 'error'
+      });
+    }else if(this.data.bookName!=this.data.book.bname){
       // console.log()
       $Toast({
         content: "账本名输入错误",
@@ -59,7 +65,6 @@ Page({
       wx.showLoading({
         title: '删除账本数据中',
       })
-      let user = wx.getStorageSync('userInfo')
       let bid = this.data.book.bid
       bookDel({bid:bid,uid:user.uid}).then(res=>{
         setTimeout(() => {
@@ -187,10 +192,17 @@ Page({
   },
   delMember(){
     let that = this
+    let user = wx.getStorageSync('userInfo')
+    if(that.data.action=='remove' && (!user||!user.uid||user.uid!=that.data.hostId)){
+      $Toast({
+        content: "无权限移除该成员",
+        type: 'error'
+      });
+      return
+    }
     wx.showLoading({
       title: that.data.action=='remove'?'移除成员中':'退出账本中',
     })
-    let user = wx.getStorageSync('userInfo')
     memberDel({
       bid:that.data.book.bid,
       uid:that.data.delUid,
