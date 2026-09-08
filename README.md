@@ -222,7 +222,7 @@ Agent 和 OCR Billing 请求会生成或复用 `X-Trace-Id`，并通过 MDC 串�
 <div style="display:flex">
   <img src="image/IMG_3690.png" width="30%" />
   
-  <img src="image/IMG_3688.png" width="30%" />
+  <img src="image/IMG_3719.png" width="30%" />
 </div>
 
 ### 新增类别
@@ -246,7 +246,7 @@ Agent 和 OCR Billing 请求会生成或复用 `X-Trace-Id`，并通过 MDC 串�
 ### Agent记忆
 
 <div style="display:flex">
-  <img src="image/IMG_3718.jpg width="30%" />
+  <img src="image/IMG_3718.jpg" width="30%" />
 
   <img src="image/IMG_3715.jpg" width="30%" />
 
