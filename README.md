@@ -205,6 +205,54 @@ Agent 和 OCR Billing 请求会生成或复用 `X-Trace-Id`，并通过 MDC 串�
 
 # 小程序页面
 
+### 智能记账
+
+<div style="display:flex">
+  <img src="image/IMG_3689.png" width="30%" />
+  
+  <img src="image/IMG_3688.png" width="30%" />
+
+  <img src="image/IMG_3709.png" width="30%" />
+
+  <img src="image/IMG_3712.jpg" width="30%" />
+</div>
+
+### OCR图片识别记账
+
+<div style="display:flex">
+  <img src="image/IMG_3690.png" width="30%" />
+  
+  <img src="image/IMG_3688.png" width="30%" />
+</div>
+
+### 新增类别
+
+<div style="display:flex">
+  <img src="image/IMG_3708.png" width="30%" />
+
+  <img src="image/IMG_3717.jpg" width="30%" />
+</div>
+
+### 账单分析查看
+
+<div style="display:flex">
+  <img src="image/IMG_3707.png" width="30%" />
+
+  <img src="image/IMG_3713.jpg" width="30%" />
+
+  <img src="image/IMG_3714.jpg" width="30%" />
+</div>
+
+### Agent记忆
+
+<div style="display:flex">
+  <img src="image/IMG_3718.jpg width="30%" />
+
+  <img src="image/IMG_3715.jpg" width="30%" />
+
+  <img src="image/IMG_3716.jpg" width="30%" />
+</div>
+
 ### 首页
 
 在首页可以查看到某个月的所有支出与收入情况，并且会根据日期对每一天的支出与收入进行划分，在顶部可以点击对应的年月进行切换，右侧还可以查看指定账本中的账单数据
@@ -298,26 +346,6 @@ Agent 和 OCR Billing 请求会生成或复用 `X-Trace-Id`，并通过 MDC 串�
   <img src="image/IMG_3696.png" width="30%" />
   
   <img src="image/IMG_3697.png" width="30%" />
-</div>
-
-### Agent智能助手
-
-在记账页点击自动记账就会跳转到AI自动记账页，用户只需输入或上传对应的账单图片，即可快速完成记账，系统会自动提取对应的类别。图片识别也采用OCR的方式，将账单文字提取出来后，交给AI帮我们完成记账操作。
-
-<div style="display:flex">
-  <img src="image/IMG_3689.png" width="30%" />
-  
-  <img src="image/IMG_3688.png" width="30%" />
-  
-  <img src="image/IMG_3690.png" width="30%" />
-
-  <img src="image/IMG_3707.png" width="30%" />
-
-  <img src="image/IMG_3708.png" width="30%" />
-
-  <img src="image/IMG_3709.png" width="30%" />
-  
-  <img src="image/IMG_3691.png" width="30%" />
 </div>
 
 # 微信公众号
